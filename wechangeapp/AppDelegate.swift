@@ -8,16 +8,29 @@
 import UIKit
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let center = UNUserNotificationCenter.current()
+        center.delegate = self
+        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if let error = error {
+                print(error)
+            }
+            
+            // Enable or disable features based on the authorization.
+        }
+//
+//        let localNotify = launchOptions?[UIApplication.LaunchOptionsKey.localNotification];
+//        if (localNotify != nil) {
+//            localNotify.
+//            content.userInfo["timestamp"] = p_timestamp
+//        }
         return true
     }
-
-    // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
