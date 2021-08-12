@@ -95,19 +95,14 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("CLLocationManager:didUpdateLocations called");
-        var userLocation: CLLocation = CLLocation()
-        var previousUpdate:TimeInterval = 0 // TODO: fix! should not be reset on each call...
+        // var userLocation: CLLocation = CLLocation()
+        // var previousUpdate:TimeInterval = 0 // TODO: fix! should not be reset on each call...
+        // userLocation = locations.last!
+        // let howRecent = abs(userLocation.timestamp.timeIntervalSinceNow)
         
-        userLocation = locations.last!
-        
-        let howRecent = abs(userLocation.timestamp.timeIntervalSinceNow)
-        let timestamp = NSDate().timeIntervalSince1970
-        
-        if  howRecent < RECENT_LOCATION_TIMESPAN_THRESHOLD &&
-            (previousUpdate == 0 || timestamp - previousUpdate > RECENT_LOCATION_SEND_THRESHOLD) {
-            previousUpdate = timestamp
-            
-            //Test Pull Notification
+        if shouldPullNotifications() {
+            print("trying to pull notifications...")
+            self.lastTimeCheckedForNotifications = Date()
             Net.pullNotificationTask(success: { (result) in
                 print("Pull Notification success")
                 let w_result: JSON = result
@@ -129,6 +124,12 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
                 print("Pull Notification error code: \(code), message: \(errMsg)")
             })
         }
+    }
+    
+    private func shouldPullNotifications() -> Bool {
+        print("Time since last check: \(abs(lastTimeCheckedForNotifications.timeIntervalSinceNow))")
+        print("refresh interval: \(Config.NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS)")
+        return abs(lastTimeCheckedForNotifications.timeIntervalSinceNow) > Config.NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS
     }
     
     // TODO: no need for p_private parameter names
