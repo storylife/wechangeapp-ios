@@ -9,6 +9,7 @@ enum Config {
     static let WECHANGE_MESSAGES_URL: String = "https://skip.scientists4future.org/messages/"
     static let WECHANGE_ROCKET_CHAT_URL: String = "https://chat.skip.scientists4future.org"
     static let WECHANGE_NEXTCLOUD_URL: String = "https://cloud.skip.scientists4future.org"
+    static let CHAT_INSTALL_INSTRUCTIONS_TEXT: String = "Zur Einrichtung von Rocket.Chat:\n\n1. Klicke auf\"Tritt einem Arbeitsbereich bei\".\n2. Gib als URL \"chat.skip.scientists4future.org\" ein.\n3.Melde dich anschließend mit deinen Zugangsdaten an."
     
     
     // generic constants

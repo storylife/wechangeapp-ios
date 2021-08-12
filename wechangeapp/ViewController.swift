@@ -19,7 +19,7 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let exInfo = ExternalAppInformation(inAppPackage: Config.APP_ROCKET_CHAT, inAppTitleResourceKey: "Rocket Chat", inInstructionsResourceKey: "Zur Einrichtung von Rocket.Chat:\n\n1. Klicke auf\"Tritt einem Arbeitsbereich bei\".\n2. Gib als URL \"rocketchat.wechange.de\" ein.\n3.Melde dich anschließend mit deinen WECHANGE-Zugangsdaten an.", inBrowserURL: Config.WECHANGE_ROCKET_CHAT_URL)
+        let exInfo = ExternalAppInformation(inAppPackage: Config.APP_ROCKET_CHAT, inAppTitleResourceKey: "Rocket Chat", inInstructionsResourceKey: Config.CHAT_INSTALL_INSTRUCTIONS_TEXT, inBrowserURL: Config.WECHANGE_ROCKET_CHAT_URL)
         appsToLaunchByURL[Config.WECHANGE_MESSAGES_URL] = exInfo;
         self.webView.navigationDelegate = self;
         self.webView.uiDelegate = self;
