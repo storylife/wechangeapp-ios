@@ -16,11 +16,12 @@ let RECENT_LOCATION_SEND_THRESHOLD = 10.0
 // 2) extract helper functions and classes and split code into smaller files (single responsibility principle)
 // 3) fix bugs
 
-class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate {
+class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var webView: WKWebView!
     var appsToLaunchByURL:[String:ExternalAppInformation] = [:];
     var locationManager = CLLocationManager()
+    var lastTimeCheckedForNotifications = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
