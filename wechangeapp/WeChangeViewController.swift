@@ -183,11 +183,11 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         if let appURL = URL(string: p_appInfo.appPackage) {
             if UIApplication.shared.canOpenURL(appURL as URL)
             {
-                self.externalInstallDialog(appInfo: p_appInfo)
+                externalInstallDialog(appInfo: p_appInfo)
             }
             else
             {
-                self.externalNotInstallDialog(appInfo: p_appInfo)
+                externalNotInstallDialog(appInfo: p_appInfo)
             }
         }
     }
