@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  wechangeapp
-//
-//  Created by Shadow on 2021/7/15.
-//
-
 import UIKit
 
 @main
@@ -57,7 +50,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         Net.markNotificationSeenTask(timestamp: value as! Double)
         completionHandler()
     }
-
-
 }
-

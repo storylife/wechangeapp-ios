@@ -1,10 +1,3 @@
-//
-//  wechangeappUITests.swift
-//  wechangeappUITests
-//
-//  Created by Shadow on 2021/7/15.
-//
-
 import XCTest
 
 class wechangeappUITests: XCTestCase {

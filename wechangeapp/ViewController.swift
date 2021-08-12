@@ -1,18 +1,10 @@
-//
-//  ViewController.swift
-//  wechangeapp
-//
-//  Created by Shadow on 2021/7/15.
-//
-
-import UIKit
+/import UIKit
 import WebKit
 import SwiftyJSON
 import CoreLocation
 import AppTrackingTransparency
 import MapKit
 import UserNotifications
-
 
 
 let RECENT_LOCATION_TIMESPAN_THRESHOLD = 10.0
@@ -62,8 +54,6 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
                 HTTPCookieStorage.shared.setCookie(newCookie!)
                 print("name: \(cookie.name) value: \(cookie.value)")
             }
-            
-            
         }
         task.resume()
           
@@ -94,18 +84,7 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.locationManager.delegate = self
             self.locationManager.startUpdatingLocation()
-            
-            
         }
-        
-        
-        
-        //self.locationManager.requestWhenInUseAuthorization()
-//        sendNotification()
-        
-        
-        
-        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -117,7 +96,6 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
         
         let howRecent = abs(userLocation.timestamp.timeIntervalSinceNow)
         let timestamp = NSDate().timeIntervalSince1970
-        
         
         if  howRecent < RECENT_LOCATION_TIMESPAN_THRESHOLD &&
             (previousUpdate == 0 || timestamp - previousUpdate > RECENT_LOCATION_SEND_THRESHOLD) {
@@ -140,7 +118,6 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
                         }
                     }
                 }
-
             },
             failure: { (code, errMsg) in
                 print("Pull Notification error code: \(code), message: \(errMsg)")
@@ -177,8 +154,8 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
         UNUserNotificationCenter.current().add(request)
         
         ViewModel.notifiedIds.append(idString);
-        
     }
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         print("decidePolicyFor")
         let request = navigationAction.request
@@ -194,7 +171,6 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
         }
         decisionHandler(WKNavigationActionPolicy.allow)
     }
-    
     
     func launchExternalApp(appInfo p_appInfo:ExternalAppInformation) {
         if let appURL = URL(string: p_appInfo.appPackage) {
@@ -302,10 +278,6 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
 //
 //
 //
-
     
-    
-
-
 }
 

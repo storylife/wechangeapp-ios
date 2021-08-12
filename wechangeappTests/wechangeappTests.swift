@@ -1,10 +1,3 @@
-//
-//  wechangeappTests.swift
-//  wechangeappTests
-//
-//  Created by Shadow on 2021/7/15.
-//
-
 import XCTest
 @testable import wechangeapp
 
