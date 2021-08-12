@@ -207,7 +207,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         alert.addAction(UIAlertAction(title: "Im Browser öffnen", style: .default){ action in
             
             if let url = URL(string: appInfo.browserURL.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!), UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.openURL(url)
+                UIApplication.shared.open(url)
             }
             _ = self.navigationController?.popViewController(animated: true)
         })
@@ -223,7 +223,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
             
             //Open Appstore
             if let appURL = URL(string: "market://details?id=" + appInfo.appPackage){
-                UIApplication.shared.openURL(appURL)
+                UIApplication.shared.open(appURL)
             }
             _ = self.navigationController?.popViewController(animated: true)
         })
@@ -231,7 +231,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         alert.addAction(UIAlertAction(title: "Im Browser öffnen", style: .default){ action in
             
             if let url = URL(string: appInfo.browserURL.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!), UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.openURL(url)
+                UIApplication.shared.open(url)
             }
             _ = self.navigationController?.popViewController(animated: true)
         })
