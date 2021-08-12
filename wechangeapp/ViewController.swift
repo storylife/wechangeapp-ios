@@ -11,6 +11,11 @@ let RECENT_LOCATION_TIMESPAN_THRESHOLD = 10.0
 let RECENT_LOCATION_SEND_THRESHOLD = 10.0
 
 
+// TODO:
+// 1) improve variable and function names
+// 2) extract helper functions and classes and split code into smaller files (single responsibility principle)
+// 3) fix bugs
+
 class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var webView: WKWebView!
@@ -90,7 +95,7 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print("CLLocationManager:didUpdateLocations called");
         var userLocation: CLLocation = CLLocation()
-        var previousUpdate:TimeInterval = 0
+        var previousUpdate:TimeInterval = 0 // TODO: fix! should not be reset on each call...
         
         userLocation = locations.last!
         
@@ -125,7 +130,7 @@ class ViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLoca
         }
     }
     
-    
+    // TODO: no need for p_private parameter names
     func sendNotification(data p_data:JSON, timestamp p_timestamp:Double)
     {
         print("Send Notification")
