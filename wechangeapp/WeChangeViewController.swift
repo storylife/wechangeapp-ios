@@ -222,7 +222,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         alert.addAction(UIAlertAction(title: appInfo.appTitleResourceKey + " installieren", style: .default) { action in
             
             //Open Appstore
-            if let appURL = URL(string: "market://details?id=" + appInfo.appPackage){
+            if let appURL = URL(string: "https://apps.apple.com/de/app/" + appInfo.appPackage){
                 UIApplication.shared.open(appURL)
             }
             _ = self.navigationController?.popViewController(animated: true)

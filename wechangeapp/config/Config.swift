@@ -13,7 +13,7 @@ enum Config {
     
     
     // generic constants
-    static let APP_ROCKET_CHAT: String = "chat.rocket.ios"
+    static let APP_ROCKET_CHAT: String = "rocket-chat/id1148741252"
     
     static let NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS: Double = 10
     static let CHANNEL_PLATFORM_NOTIFICATIONS_ID: String = "platform_notifications"
