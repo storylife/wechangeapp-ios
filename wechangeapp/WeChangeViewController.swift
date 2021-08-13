@@ -183,16 +183,16 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         if let appURL = URL(string: p_appInfo.appPackage) {
             if UIApplication.shared.canOpenURL(appURL as URL)
             {
-                externalInstallDialog(appInfo: p_appInfo)
+                externalAppIsInstalledDialog(appInfo: p_appInfo)
             }
             else
             {
-                externalNotInstallDialog(appInfo: p_appInfo)
+                externalAppIsNotInstalledDialog(appInfo: p_appInfo)
             }
         }
     }
     
-    func externalInstallDialog(appInfo:ExternalAppInformation){
+    func externalAppIsInstalledDialog(appInfo:ExternalAppInformation){
         var message = appInfo.appTitleResourceKey + "ist installiert!"
         message = message + "\n\n" + appInfo.instructionsResourceKey
         
@@ -214,7 +214,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         present(alert, animated: true)
     }
     
-    func externalNotInstallDialog(appInfo:ExternalAppInformation){
+    func externalAppIsNotInstalledDialog(appInfo:ExternalAppInformation){
         var message = appInfo.appTitleResourceKey + " ist nicht installiert!"
         message = message + "\n\n" + "Alternativ kannst du die Anwendung auch im Browser öffnen."
         
