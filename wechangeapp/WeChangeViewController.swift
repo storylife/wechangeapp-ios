@@ -7,10 +7,6 @@ import MapKit
 import UserNotifications
 
 
-let RECENT_LOCATION_TIMESPAN_THRESHOLD = 10.0
-let RECENT_LOCATION_SEND_THRESHOLD = 10.0
-
-
 class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var webView: WKWebView!
