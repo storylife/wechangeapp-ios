@@ -16,11 +16,14 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let exInfo = ExternalAppInformation(inAppPackage: Config.APP_ROCKET_CHAT, inAppTitleResourceKey: "Rocket Chat", inInstructionsResourceKey: Config.CHAT_INSTALL_INSTRUCTIONS_TEXT, inBrowserURL: Config.WECHANGE_ROCKET_CHAT_URL)
-        appsToLaunchByURL[Config.WECHANGE_MESSAGES_URL] = exInfo;
+        let rocketChatAppInfo = ExternalAppInformation(inAppPackage: Config.ROCKET_CHAT_APP_STORE_ID,
+                                                       inAppTitleResourceKey: "Rocket Chat",
+                                                       inInstructionsResourceKey: Config.CHAT_INSTALL_INSTRUCTIONS_TEXT,
+                                                       inBrowserURL: Config.WECHANGE_ROCKET_CHAT_URL)
+        appsToLaunchByURL[Config.WECHANGE_MESSAGES_URL] = rocketChatAppInfo;
         self.webView.navigationDelegate = self;
         self.webView.uiDelegate = self;
-        //self.webView.lo
+        
         let link = URL(string:ViewModel.currentURL)!
         let request = URLRequest(url: link)
         webView.load(request)
@@ -86,10 +89,6 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if Config.DEBUG == true { print("CLLocationManager:didUpdateLocations called") }
-        // var userLocation: CLLocation = CLLocation()
-        // var previousUpdate:TimeInterval = 0 // TODO: fix! should not be reset on each call...
-        // userLocation = locations.last!
-        // let howRecent = abs(userLocation.timestamp.timeIntervalSinceNow)
         
         if shouldPullNotifications() {
             if Config.DEBUG == true { print("trying to pull notifications...") }
