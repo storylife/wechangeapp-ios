@@ -12,14 +12,14 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     @IBOutlet weak var webView: WKWebView!
     var appsToLaunchByURL:[String:ExternalAppInformation] = [:];
     var locationManager = CLLocationManager()
-    var lastTimeCheckedForNotifications = Date()
+    var lastTimeCheckedForNewsUpdates = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let rocketChatAppInfo = ExternalAppInformation(inAppPackage: Config.ROCKET_CHAT_APP_STORE_ID,
-                                                       inAppTitleResourceKey: "Rocket Chat",
-                                                       inInstructionsResourceKey: Config.CHAT_INSTALL_INSTRUCTIONS_TEXT,
-                                                       inBrowserURL: Config.WECHANGE_ROCKET_CHAT_URL)
+        let rocketChatAppInfo = ExternalAppInformation(appStoreNameAndIDPartOfURL: Config.ROCKET_CHAT_APP_STORE_ID,
+                                                       appTitle: "Rocket Chat",
+                                                       installInstructionsText: Config.CHAT_INSTALL_INSTRUCTIONS_TEXT,
+                                                       browserURL: Config.WECHANGE_ROCKET_CHAT_URL)
         appsToLaunchByURL[Config.WECHANGE_MESSAGES_URL] = rocketChatAppInfo;
         self.webView.navigationDelegate = self;
         self.webView.uiDelegate = self;
@@ -90,37 +90,41 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if Config.DEBUG == true { print("CLLocationManager:didUpdateLocations called") }
         
-        if shouldPullNotifications() {
-            if Config.DEBUG == true { print("trying to pull notifications...") }
-            self.lastTimeCheckedForNotifications = Date()
-            Net.pullNotificationTask(success: { (result) in
-                if Config.DEBUG == true { print("Pull Notification success") }
-                let w_result: JSON = result
-                if Config.DEBUG == true { print (w_result) }
-                let newestTimestamp = w_result[Config.JSON_KEY_DATA][Config.JSON_KEY_NEWEST_TIMESTAMP].double
-                if let arr = w_result[Config.JSON_KEY_DATA][Config.JSON_KEY_ITEMS].array {
-                    if Config.DEBUG == true { print(arr) }
-                    for jobj in arr {
-                        if let notify = jobj[Config.JSON_KEY_IS_EMPHASIZED].bool {
-                            if notify
-                            {
-                                self.sendNotification(newsData: jobj, newsTimestamp: newestTimestamp!)
-                            }
-                        }
-                    }
-                }
-            },
-            failure: { (code, errMsg) in
-                if Config.DEBUG == true { print("Pull Notification error code: \(code), message: \(errMsg)") }
-            })
+        if shouldPullNewsUpdates() {
+            pullNewsUpdates()
         }
     }
     
-    private func shouldPullNotifications() -> Bool {
-        return abs(lastTimeCheckedForNotifications.timeIntervalSinceNow) > Config.NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS
+    private func shouldPullNewsUpdates() -> Bool {
+        return abs(lastTimeCheckedForNewsUpdates.timeIntervalSinceNow) > Config.NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS
     }
     
-    private func sendNotification(newsData: JSON, newsTimestamp: Double)
+    private func pullNewsUpdates() {
+        if Config.DEBUG == true { print("trying to pull notifications...") }
+        self.lastTimeCheckedForNewsUpdates = Date()
+        Net.pullNewsUpdates(success: { (result) in
+            if Config.DEBUG == true { print("Pull Notification success") }
+            let w_result: JSON = result
+            if Config.DEBUG == true { print (w_result) }
+            let newestTimestamp = w_result[Config.JSON_KEY_DATA][Config.JSON_KEY_NEWEST_TIMESTAMP].double
+            if let arr = w_result[Config.JSON_KEY_DATA][Config.JSON_KEY_ITEMS].array {
+                if Config.DEBUG == true { print(arr) }
+                for jobj in arr {
+                    if let notify = jobj[Config.JSON_KEY_IS_EMPHASIZED].bool {
+                        if notify
+                        {
+                            self.showNotification(newsData: jobj, newsTimestamp: newestTimestamp!)
+                        }
+                    }
+                }
+            }
+        },
+        failure: { (code, errMsg) in
+            if Config.DEBUG == true { print("Pull Notification error code: \(code), message: \(errMsg)") }
+        })
+    }
+    
+    private func showNotification(newsData: JSON, newsTimestamp: Double)
     {
         if Config.DEBUG == true { print("Send Notification") }
         
@@ -167,8 +171,8 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     }
     
     func launchExternalApp(appInfo: ExternalAppInformation) {
-        if let appURL = URL(string: appInfo.appPackage) {
-            if UIApplication.shared.canOpenURL(appURL as URL)
+        if let appLaunchURL = URL(string: appInfo.browserURL) {
+            if UIApplication.shared.canOpenURL(appLaunchURL as URL)
             {
                 externalAppIsInstalledDialog(appInfo: appInfo)
             }
@@ -180,12 +184,12 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     }
     
     func externalAppIsInstalledDialog(appInfo: ExternalAppInformation){
-        var message = appInfo.appTitleResourceKey + "ist installiert!"
-        message = message + "\n\n" + appInfo.instructionsResourceKey
+        var message = appInfo.appTitle + "ist installiert!"
+        message = message + "\n\n" + appInfo.installInstructionsText
         
         let alert = UIAlertController(title: "Externe App starten", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: appInfo.appTitleResourceKey + " starten", style: .default) { action in
-            if let appURL = URL(string: appInfo.appPackage){
+        alert.addAction(UIAlertAction(title: appInfo.appTitle + " starten", style: .default) { action in
+            if let appURL = URL(string: appInfo.appStoreNameAndIDPartOfURL){
                 UIApplication.shared.open(appURL)
             }
             _ = self.navigationController?.popViewController(animated: true)
@@ -202,14 +206,14 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     }
     
     func externalAppIsNotInstalledDialog(appInfo: ExternalAppInformation){
-        var message = appInfo.appTitleResourceKey + " ist nicht installiert!"
+        var message = appInfo.appTitle + " ist nicht installiert!"
         message = message + "\n\n" + "Alternativ kannst du die Anwendung auch im Browser öffnen."
         
         let alert = UIAlertController(title: "Externe App starten", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: appInfo.appTitleResourceKey + " installieren", style: .default) { action in
+        alert.addAction(UIAlertAction(title: appInfo.appTitle + " installieren", style: .default) { action in
             
             //Open Appstore
-            if let appURL = URL(string: "https://apps.apple.com/de/app/" + appInfo.appPackage){
+            if let appURL = URL(string: "https://apps.apple.com/de/app/" + appInfo.appStoreNameAndIDPartOfURL){
                 UIApplication.shared.open(appURL)
             }
             _ = self.navigationController?.popViewController(animated: true)
@@ -226,4 +230,3 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     }
     
 }
-

@@ -129,7 +129,7 @@ open class Net {
     }
     
     
-    public static func pullNotificationTask(
+    public static func pullNewsUpdates(
         success p_success   : SuccessBlock?,
         failure p_failure   : FailureBlock?
     )
