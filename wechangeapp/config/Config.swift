@@ -1,6 +1,8 @@
 import Foundation
 enum Config {
     
+    static let DEBUG = true
+        
     // customer specific constants
     static let WECHANGE_URL: String = "https://skip.scientists4future.org/dashboard/"
     static let NOTIFICATION_URL: String = "https://skip.scientists4future.org/profile/api/alerts/get/"

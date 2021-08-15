@@ -11,11 +11,6 @@ let RECENT_LOCATION_TIMESPAN_THRESHOLD = 10.0
 let RECENT_LOCATION_SEND_THRESHOLD = 10.0
 
 
-// TODO:
-// 1) improve variable and function names
-// 2) extract helper functions and classes and split code into smaller files (single responsibility principle)
-// 3) fix bugs
-
 class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var webView: WKWebView!
@@ -58,7 +53,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
 
                 let newCookie = HTTPCookie(properties: cookieProperties)
                 HTTPCookieStorage.shared.setCookie(newCookie!)
-                print("name: \(cookie.name) value: \(cookie.value)")
+                if Config.DEBUG == true { print("name: \(cookie.name) value: \(cookie.value)") }
             }
         }
         task.resume()
@@ -94,105 +89,102 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("CLLocationManager:didUpdateLocations called");
+        if Config.DEBUG == true { print("CLLocationManager:didUpdateLocations called") }
         // var userLocation: CLLocation = CLLocation()
         // var previousUpdate:TimeInterval = 0 // TODO: fix! should not be reset on each call...
         // userLocation = locations.last!
         // let howRecent = abs(userLocation.timestamp.timeIntervalSinceNow)
         
         if shouldPullNotifications() {
-            print("trying to pull notifications...")
+            if Config.DEBUG == true { print("trying to pull notifications...") }
             self.lastTimeCheckedForNotifications = Date()
             Net.pullNotificationTask(success: { (result) in
-                print("Pull Notification success")
+                if Config.DEBUG == true { print("Pull Notification success") }
                 let w_result: JSON = result
-                print (w_result);
+                if Config.DEBUG == true { print (w_result) }
                 let newestTimestamp = w_result[Config.JSON_KEY_DATA][Config.JSON_KEY_NEWEST_TIMESTAMP].double
                 if let arr = w_result[Config.JSON_KEY_DATA][Config.JSON_KEY_ITEMS].array {
-                    print(arr);
+                    if Config.DEBUG == true { print(arr) }
                     for jobj in arr {
                         if let notify = jobj[Config.JSON_KEY_IS_EMPHASIZED].bool {
                             if notify
                             {
-                                self.sendNotification(data: jobj, timestamp: newestTimestamp!)
+                                self.sendNotification(newsData: jobj, newsTimestamp: newestTimestamp!)
                             }
                         }
                     }
                 }
             },
             failure: { (code, errMsg) in
-                print("Pull Notification error code: \(code), message: \(errMsg)")
+                if Config.DEBUG == true { print("Pull Notification error code: \(code), message: \(errMsg)") }
             })
         }
     }
     
     private func shouldPullNotifications() -> Bool {
-        print("Time since last check: \(abs(lastTimeCheckedForNotifications.timeIntervalSinceNow))")
-        print("refresh interval: \(Config.NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS)")
         return abs(lastTimeCheckedForNotifications.timeIntervalSinceNow) > Config.NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS
     }
     
-    // TODO: no need for p_private parameter names
-    func sendNotification(data p_data:JSON, timestamp p_timestamp:Double)
+    private func sendNotification(newsData: JSON, newsTimestamp: Double)
     {
-        print("Send Notification")
+        if Config.DEBUG == true { print("Send Notification") }
         
-        let nid = p_data[Config.JSON_KEY_ID].int;
-        let idString = String(describing: nid)
-        if ViewModel.notifiedIds.contains(idString) {
-            print("Already sent")
+        let newsID = String(describing: newsData[Config.JSON_KEY_ID].int)
+        if ViewModel.notifiedIds.contains(newsID) {
+            if Config.DEBUG == true { print("Already sent") }
+            // TODO: we need to make sure, these notifications are set to 'seen' on the server!
             return;
         }
         let content = UNMutableNotificationContent()
-        content.title = "Neue Aktivität in " + p_data[Config.JSON_KEY_GROUP].string!;
+        content.title = "Neue Aktivität in " + newsData[Config.JSON_KEY_GROUP].string!;
         
-        var string = p_data[Config.JSON_KEY_TEXT].string!;
+        let string = newsData[Config.JSON_KEY_TEXT].string!;
         let str = string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         content.subtitle = str
         content.sound = UNNotificationSound.default
-        content.userInfo["timestamp"] = p_timestamp
+        content.userInfo["timestamp"] = newsTimestamp
 
         // show this notification five seconds from now
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
 
         // choose a random identifier
-        let request = UNNotificationRequest(identifier: idString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: newsID, content: content, trigger: trigger)
         // add our notification request
         UNUserNotificationCenter.current().add(request)
         
-        ViewModel.notifiedIds.append(idString);
+        ViewModel.notifiedIds.append(newsID);
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        print("decidePolicyFor")
+        if Config.DEBUG == true { print("decidePolicyFor") }
         let request = navigationAction.request
-        print("request: ", request)
+        if Config.DEBUG == true { print("request: ", request) }
 
         for (key, value) in appsToLaunchByURL
         {
             if (request.url?.absoluteString.hasPrefix(key))!
             {
-                print("URL found. Starting external app")
+                if Config.DEBUG == true { print("URL found. Starting external app") }
                 launchExternalApp(appInfo: value);
             }
         }
         decisionHandler(WKNavigationActionPolicy.allow)
     }
     
-    func launchExternalApp(appInfo p_appInfo:ExternalAppInformation) {
-        if let appURL = URL(string: p_appInfo.appPackage) {
+    func launchExternalApp(appInfo: ExternalAppInformation) {
+        if let appURL = URL(string: appInfo.appPackage) {
             if UIApplication.shared.canOpenURL(appURL as URL)
             {
-                externalAppIsInstalledDialog(appInfo: p_appInfo)
+                externalAppIsInstalledDialog(appInfo: appInfo)
             }
             else
             {
-                externalAppIsNotInstalledDialog(appInfo: p_appInfo)
+                externalAppIsNotInstalledDialog(appInfo: appInfo)
             }
         }
     }
     
-    func externalAppIsInstalledDialog(appInfo:ExternalAppInformation){
+    func externalAppIsInstalledDialog(appInfo: ExternalAppInformation){
         var message = appInfo.appTitleResourceKey + "ist installiert!"
         message = message + "\n\n" + appInfo.instructionsResourceKey
         
@@ -214,7 +206,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         present(alert, animated: true)
     }
     
-    func externalAppIsNotInstalledDialog(appInfo:ExternalAppInformation){
+    func externalAppIsNotInstalledDialog(appInfo: ExternalAppInformation){
         var message = appInfo.appTitleResourceKey + " ist nicht installiert!"
         message = message + "\n\n" + "Alternativ kannst du die Anwendung auch im Browser öffnen."
         
@@ -237,54 +229,6 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         })
         present(alert, animated: true)
     }
-    
-//    -(void) reloadWebView: (UIRefreshControl *) sender
-//    {
-//        [self.webView reload];
-//        [sender endRefreshing];
-//    }
-//    - (void) webView: (WKWebView *) webView didStartProvisionalNavigation: (WKNavigation *) navigation {
-//        NSLog(@"%s", __PRETTY_FUNCTION__);
-//        NSURL *u1 = webView.URL;  //By this time it's changed
-//        NSLog(@"%@", u1);
-//        if ([u1.absoluteString rangeOfString:@"logout"].location != NSNotFound)
-//        {
-//            [Globals clearUserInfo];
-//            LoginViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LoginViewController"];
-//            [self presentViewController:vc animated:YES completion:nil];
-//        }
-//    }
-    
-//
-//    g_ProgressUtil.showProgress()
-//           Net.getDriverDetail(
-//               driverid: g_MeInfo.driver_id,
-//               success: { (result) in
-//                   g_ProgressUtil.hideProgress()
-//                   print("getDriverDetail success")
-//                   let w_result: JSON = result
-//                   if w_result["retcode"].int! == 0 {
-//                       let retdata = w_result["retdata"][0]
-//                       let m_driver:DriverV2Info = DriverV2Info(json: retdata)
-//
-//                       let vc = GarageEditV2VC(nibName: "GarageEditV2VC", bundle: nil)
-//                       vc.m_driver = m_driver
-//                       let commonVC = vc as CommonViewController
-//                       commonVC._delegate = self
-//                       self.navigationController?.pushViewController(vc, animated: true)
-//                   } else {
-//                       print("getDriverDetail error message: \(w_result["retmsg"].string!)")
-//                       self.view.makeToast(w_result["retmsg"].stringValue)
-//                   }
-//           },
-//               failure: { (code, errMsg) in
-//                   g_ProgressUtil.hideProgress()
-//                   print("getDriverDetail error code: \(code), message: \(errMsg)")
-//           }
-//           )
-//
-//
-//
     
 }
 
