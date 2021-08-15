@@ -15,8 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
         
         // Fetch data once an hour.
-           UIApplication.shared.setMinimumBackgroundFetchInterval(3600)
-        
+        UIApplication.shared.setMinimumBackgroundFetchInterval(3600)
         
         return true
     }
@@ -46,14 +45,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             completionHandler()
             return
         }
-        Net.markNotificationSeenTask(timestamp: notificationTimestamp) // TODO: check!! A Double as a unique identifier??
+        Net.markNotificationSeen(timestamp: notificationTimestamp, successHandler: { jsonResponse in
+            if Config.DEBUG == true { print("mark as seen – success! \(jsonResponse)")}
+        }, failureHandler: { errorCode, errorMessage in
+            if Config.DEBUG == true { print("mark as seen – failed!! Error: \(errorMessage) (\(errorCode))")}
+        })
         completionHandler()
     }
     
     func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if Config.DEBUG == true { print("Background Fetch started!!") }
         WeChangeNewsFetcher.fetchNewsUpdates { fetchResult in
-            guard let newsContent = fetchResult else { completionHandler(.noData); return }
+            guard let newsContent = fetchResult else { completionHandler(.failed); return }
             let newestTimestamp = newsContent[Config.JSON_KEY_DATA][Config.JSON_KEY_NEWEST_TIMESTAMP].double
             if let newsItems: [JSON] = newsContent[Config.JSON_KEY_DATA][Config.JSON_KEY_ITEMS].array {
                 if Config.DEBUG == true { print(newsItems) }
@@ -65,11 +68,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                         }
                     }
                 }
+                completionHandler(.newData)
+                return
+            } else {
+                completionHandler(.noData)
             }
         }
-
-        
-        
-        
     }
 }
