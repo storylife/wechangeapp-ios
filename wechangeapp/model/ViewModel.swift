@@ -1,11 +1,6 @@
-//
-//  ViewModel.swift
-//  wechangeapp
-//
-//  Created by Shadow on 2021/7/15.
-//
-
 import Foundation
+
+// TODO: refactor!! Maybe store persistent data in UserDefaults?
 
 class ViewModel {
       

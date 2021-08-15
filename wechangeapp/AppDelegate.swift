@@ -1,27 +1,23 @@
 import UIKit
+import SwiftyJSON
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let center = UNUserNotificationCenter.current()
-        center.delegate = self
-        center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.delegate = self
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if let error = error {
                 print(error) // TODO: handle error!
             }
-            
-            // Enable or disable features based on the authorization.
         }
-//
-//        let localNotify = launchOptions?[UIApplication.LaunchOptionsKey.localNotification];
-//        if (localNotify != nil) {
-//            localNotify.
-//            content.userInfo["timestamp"] = p_timestamp
-//        }
+        
+        // Fetch data once an hour.
+           UIApplication.shared.setMinimumBackgroundFetchInterval(3600)
+        
+        
         return true
     }
 
@@ -39,15 +35,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 
-        
-        completionHandler( [.alert, .badge, .sound])
+        completionHandler([.alert, .badge, .sound])
     }
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo as NSDictionary
-        print("\(String(describing: userInfo))")
-        let value = userInfo["timestamp"];
-        Net.markNotificationSeenTask(timestamp: value as! Double)
+        if Config.DEBUG == true { print("\(String(describing: userInfo))") }
+        guard let notificationTimestamp = userInfo["timestamp"] as? Double else {
+            if Config.DEBUG == true { print("notification.userInfo has no timestamp") }
+            completionHandler()
+            return
+        }
+        Net.markNotificationSeenTask(timestamp: notificationTimestamp) // TODO: check!! A Double as a unique identifier??
         completionHandler()
+    }
+    
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if Config.DEBUG == true { print("Background Fetch started!!") }
+        WeChangeNewsFetcher.fetchNewsUpdates { fetchResult in
+            guard let newsContent = fetchResult else { completionHandler(.noData); return }
+            let newestTimestamp = newsContent[Config.JSON_KEY_DATA][Config.JSON_KEY_NEWEST_TIMESTAMP].double
+            if let newsItems: [JSON] = newsContent[Config.JSON_KEY_DATA][Config.JSON_KEY_ITEMS].array {
+                if Config.DEBUG == true { print(newsItems) }
+                for jobj in newsItems {
+                    if let notify = jobj[Config.JSON_KEY_IS_EMPHASIZED].bool {
+                        if notify
+                        {
+                            WeChangeNotificationManager.showNotification(newsData: jobj, newsTimestamp: newestTimestamp!)
+                        }
+                    }
+                }
+            }
+        }
+
+        
+        
+        
     }
 }

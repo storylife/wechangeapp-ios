@@ -1,7 +1,6 @@
 import UIKit
 import WebKit
 import SwiftyJSON
-import CoreLocation
 import AppTrackingTransparency
 import MapKit
 import UserNotifications
@@ -11,7 +10,6 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
 
     @IBOutlet weak var webView: WKWebView!
     var appsToLaunchByURL:[String:ExternalAppInformation] = [:];
-    var locationManager = CLLocationManager()
     var lastTimeCheckedForNewsUpdates = Date()
     
     override func viewDidLoad() {
@@ -56,102 +54,6 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
             }
         }
         task.resume()
-          
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { trackingAuthorizationStatus in
-                switch trackingAuthorizationStatus {
-                case .authorized:
-                    
-                    print(trackingAuthorizationStatus)
-                case .denied:
-                    print(trackingAuthorizationStatus)
-                case .notDetermined:
-                    print(trackingAuthorizationStatus)
-                case .restricted:
-                    print(trackingAuthorizationStatus)
-                @unknown default:
-                    break
-                }
-                self.locationManager.requestAlwaysAuthorization()
-                self.locationManager.allowsBackgroundLocationUpdates = true
-                self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                self.locationManager.delegate = self
-                self.locationManager.startUpdatingLocation()
-            }
-        } else {
-            self.locationManager.requestAlwaysAuthorization()
-            self.locationManager.allowsBackgroundLocationUpdates = true
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            self.locationManager.delegate = self
-            self.locationManager.startUpdatingLocation()
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if Config.DEBUG == true { print("CLLocationManager:didUpdateLocations called") }
-        
-        if shouldPullNewsUpdates() {
-            pullNewsUpdates()
-        }
-    }
-    
-    private func shouldPullNewsUpdates() -> Bool {
-        return abs(lastTimeCheckedForNewsUpdates.timeIntervalSinceNow) > Config.NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS
-    }
-    
-    private func pullNewsUpdates() {
-        if Config.DEBUG == true { print("trying to pull notifications...") }
-        self.lastTimeCheckedForNewsUpdates = Date()
-        Net.pullNewsUpdates(success: { (result) in
-            if Config.DEBUG == true { print("Pull Notification success") }
-            let w_result: JSON = result
-            if Config.DEBUG == true { print (w_result) }
-            let newestTimestamp = w_result[Config.JSON_KEY_DATA][Config.JSON_KEY_NEWEST_TIMESTAMP].double
-            if let arr = w_result[Config.JSON_KEY_DATA][Config.JSON_KEY_ITEMS].array {
-                if Config.DEBUG == true { print(arr) }
-                for jobj in arr {
-                    if let notify = jobj[Config.JSON_KEY_IS_EMPHASIZED].bool {
-                        if notify
-                        {
-                            self.showNotification(newsData: jobj, newsTimestamp: newestTimestamp!)
-                        }
-                    }
-                }
-            }
-        },
-        failure: { (code, errMsg) in
-            if Config.DEBUG == true { print("Pull Notification error code: \(code), message: \(errMsg)") }
-        })
-    }
-    
-    private func showNotification(newsData: JSON, newsTimestamp: Double)
-    {
-        if Config.DEBUG == true { print("Send Notification") }
-        
-        let newsID = String(describing: newsData[Config.JSON_KEY_ID].int)
-        if ViewModel.notifiedIds.contains(newsID) {
-            if Config.DEBUG == true { print("Already sent") }
-            // TODO: we need to make sure, these notifications are set to 'seen' on the server!
-            return;
-        }
-        let content = UNMutableNotificationContent()
-        content.title = "Neue Aktivität in " + newsData[Config.JSON_KEY_GROUP].string!;
-        
-        let string = newsData[Config.JSON_KEY_TEXT].string!;
-        let str = string.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-        content.subtitle = str
-        content.sound = UNNotificationSound.default
-        content.userInfo["timestamp"] = newsTimestamp
-
-        // show this notification five seconds from now
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-
-        // choose a random identifier
-        let request = UNNotificationRequest(identifier: newsID, content: content, trigger: trigger)
-        // add our notification request
-        UNUserNotificationCenter.current().add(request)
-        
-        ViewModel.notifiedIds.append(newsID);
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
