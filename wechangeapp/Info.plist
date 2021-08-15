@@ -86,5 +86,10 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>rocketchat</string>
+		<string>nextcloud</string>
+	</array>
 </dict>
 </plist>

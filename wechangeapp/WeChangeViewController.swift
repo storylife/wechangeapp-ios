@@ -15,6 +15,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         let rocketChatAppInfo = ExternalAppInformation(appStoreNameAndIDPartOfURL: Config.ROCKET_CHAT_APP_STORE_ID,
+                                                       appURL: Config.WECHANGE_ROCKET_CHAT_APP_URL,
                                                        appTitle: "Rocket Chat",
                                                        installInstructionsText: Config.CHAT_INSTALL_INSTRUCTIONS_TEXT,
                                                        browserURL: Config.WECHANGE_ROCKET_CHAT_URL)
@@ -73,13 +74,10 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     }
     
     func launchExternalApp(appInfo: ExternalAppInformation) {
-        if let appLaunchURL = URL(string: appInfo.browserURL) {
-            if UIApplication.shared.canOpenURL(appLaunchURL as URL)
-            {
+        if let appLaunchURL = URL(string: appInfo.appURL) {
+            if UIApplication.shared.canOpenURL(appLaunchURL as URL){
                 externalAppIsInstalledDialog(appInfo: appInfo)
-            }
-            else
-            {
+            } else {
                 externalAppIsNotInstalledDialog(appInfo: appInfo)
             }
         }
@@ -91,16 +89,16 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         
         let alert = UIAlertController(title: "Externe App starten", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: appInfo.appTitle + " starten", style: .default) { action in
-            if let appURL = URL(string: appInfo.appStoreNameAndIDPartOfURL){
-                UIApplication.shared.open(appURL)
+            if let appLaunchURL = URL(string: appInfo.appURL) {
+                UIApplication.shared.open(appLaunchURL)
             }
             _ = self.navigationController?.popViewController(animated: true)
         })
         alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel));
         alert.addAction(UIAlertAction(title: "Im Browser öffnen", style: .default){ action in
-            
-            if let url = URL(string: appInfo.browserURL.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!), UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
+            if let browserURL = URL(string: appInfo.browserURL), UIApplication.shared.canOpenURL(browserURL) {
+                if Config.DEBUG == true { print("Trying to open URL: \(browserURL)") }
+                UIApplication.shared.open(browserURL)
             }
             _ = self.navigationController?.popViewController(animated: true)
         })
@@ -123,8 +121,9 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel));
         alert.addAction(UIAlertAction(title: "Im Browser öffnen", style: .default){ action in
             
-            if let url = URL(string: appInfo.browserURL.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!), UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
+            if let browserURL = URL(string: appInfo.browserURL), UIApplication.shared.canOpenURL(browserURL) {
+                if Config.DEBUG == true { print("Trying to open URL: \(browserURL)") }
+                UIApplication.shared.open(browserURL)
             }
             _ = self.navigationController?.popViewController(animated: true)
         })

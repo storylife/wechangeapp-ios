@@ -10,12 +10,15 @@ enum Config {
     static let DASHBOARD_URL: String = "https://skip.scientists4future.org/dashboard/"
     static let WECHANGE_MESSAGES_URL: String = "https://skip.scientists4future.org/messages/"
     static let WECHANGE_ROCKET_CHAT_URL: String = "https://chat.skip.scientists4future.org"
+    static let WECHANGE_ROCKET_CHAT_APP_URL = "rocketchat://chat.skip.scientists4future.org"
     static let WECHANGE_NEXTCLOUD_URL: String = "https://cloud.skip.scientists4future.org"
     static let CHAT_INSTALL_INSTRUCTIONS_TEXT: String = "Zur Einrichtung von Rocket.Chat:\n\n1. Klicke auf\"Tritt einem Arbeitsbereich bei\".\n2. Gib als URL \"chat.skip.scientists4future.org\" ein.\n3.Melde dich anschließend mit deinen Zugangsdaten an."
     
     
     // generic constants
     static let ROCKET_CHAT_APP_STORE_ID: String = "rocket-chat/id1148741252"
+   
+    static let ROCKET_CHAT_UNIVERSAL_URL_PREFIX = "go.rocket.chat"
     
     static let NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS: Double = 10
     static let CHANNEL_PLATFORM_NOTIFICATIONS_ID: String = "platform_notifications"
