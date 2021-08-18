@@ -31,8 +31,6 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>Wir speichern deine E-Mail Adresse und damit verbunden den freiwillig von dir erstellten Content, weil dies die Funktion dieser Austauschplattform ist. Darüber hinaus findet keinerlei Tracking statt.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
