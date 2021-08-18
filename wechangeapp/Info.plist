@@ -19,7 +19,9 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -29,16 +31,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>To make notification, need to update location</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>To make notification, need to update location</string>
-	<key>NSLocationUsageDescription</key>
-	<string>To make notification, need to update location</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>To make notification, need to update location</string>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>To make notification, need to update location</string>
+	<string>Wir speichern deine E-Mail Adresse und damit verbunden den freiwillig von dir erstellten Content, weil dies die Funktion dieser Austauschplattform ist. Darüber hinaus findet keinerlei Tracking statt.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -85,11 +79,6 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>rocketchat</string>
-		<string>nextcloud</string>
 	</array>
 </dict>
 </plist>
