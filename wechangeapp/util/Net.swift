@@ -18,7 +18,7 @@ open class Net {
         
         let url = p_url
         
-        for cookie in ViewModel.cookies {
+        for cookie in BrowserState.cookies {
             var cookieProperties = [HTTPCookiePropertyKey: Any]()
             cookieProperties[.name] = cookie.name
             cookieProperties[.value] = cookie.value

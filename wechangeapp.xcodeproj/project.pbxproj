@@ -20,7 +20,7 @@
 		BFDD960F26A06DE8006DA5AC /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD960E26A06DE8006DA5AC /* Config.swift */; };
 		BFDD961226A070DB006DA5AC /* ExternalAppInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961126A070DB006DA5AC /* ExternalAppInformation.swift */; };
 		BFDD961526A071CD006DA5AC /* WechangeCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961426A071CD006DA5AC /* WechangeCookie.swift */; };
-		BFDD961726A07634006DA5AC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961626A07634006DA5AC /* ViewModel.swift */; };
+		BFDD961726A07634006DA5AC /* BrowserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961626A07634006DA5AC /* BrowserState.swift */; };
 		BFDD961926A07A4A006DA5AC /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961826A07A4A006DA5AC /* Net.swift */; };
 		C26A3765CA3CC9FD2E089890 /* Pods_wechangeapp_wechangeappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7737F817D449C520211CB3 /* Pods_wechangeapp_wechangeappUITests.framework */; };
 		FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */; };
@@ -69,7 +69,7 @@
 		BFDD960E26A06DE8006DA5AC /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		BFDD961126A070DB006DA5AC /* ExternalAppInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppInformation.swift; sourceTree = "<group>"; };
 		BFDD961426A071CD006DA5AC /* WechangeCookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechangeCookie.swift; sourceTree = "<group>"; };
-		BFDD961626A07634006DA5AC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		BFDD961626A07634006DA5AC /* BrowserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserState.swift; sourceTree = "<group>"; };
 		BFDD961826A07A4A006DA5AC /* Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
 		D0B47C21C440B8B0E0F559D4 /* Pods-wechangeapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp.debug.xcconfig"; path = "Target Support Files/Pods-wechangeapp/Pods-wechangeapp.debug.xcconfig"; sourceTree = "<group>"; };
 		E3932CB8726823D8B5184ED0 /* Pods-wechangeapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp.release.xcconfig"; path = "Target Support Files/Pods-wechangeapp/Pods-wechangeapp.release.xcconfig"; sourceTree = "<group>"; };
@@ -192,7 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				BFDD961126A070DB006DA5AC /* ExternalAppInformation.swift */,
-				BFDD961626A07634006DA5AC /* ViewModel.swift */,
+				BFDD961626A07634006DA5AC /* BrowserState.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -464,7 +464,7 @@
 				FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */,
 				FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */,
 				BFDD961526A071CD006DA5AC /* WechangeCookie.swift in Sources */,
-				BFDD961726A07634006DA5AC /* ViewModel.swift in Sources */,
+				BFDD961726A07634006DA5AC /* BrowserState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

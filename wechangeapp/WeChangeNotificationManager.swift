@@ -11,7 +11,7 @@ struct WeChangeNotificationManager {
         if Config.DEBUG == true { print("Send Notification") }
         
         let newsID = String(describing: newsData[Config.JSON_KEY_ID].int)
-        if ViewModel.notifiedIds.contains(newsID) {
+        if BrowserState.notifiedIds.contains(newsID) {
             if Config.DEBUG == true { print("Already sent") }
             // TODO: we need to make sure, these notifications are set to 'seen' on the server!
             return;
@@ -33,6 +33,6 @@ struct WeChangeNotificationManager {
         // add our notification request
         UNUserNotificationCenter.current().add(request)
         
-        ViewModel.notifiedIds.append(newsID);
+        BrowserState.notifiedIds.append(newsID);
     }
 }

@@ -22,13 +22,13 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         self.webView.navigationDelegate = self;
         self.webView.uiDelegate = self;
         
-        let link = URL(string:ViewModel.currentURL)!
+        let link = URL(string:BrowserState.currentURL)!
         let request = URLRequest(url: link)
         webView.load(request)
         
         
         let session = URLSession.shared
-        let requestCookie = NSMutableURLRequest(url: NSURL(string: ViewModel.currentURL)! as URL)
+        let requestCookie = NSMutableURLRequest(url: NSURL(string: BrowserState.currentURL)! as URL)
         let task = session.dataTask(with: requestCookie as URLRequest) { data, response, error in
             guard
                 let url = response?.url,
@@ -37,7 +37,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
             else { return }
 
             let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: url)
-            ViewModel.cookies = cookies;
+            BrowserState.cookies = cookies;
             HTTPCookieStorage.shared.setCookies(cookies, for: url, mainDocumentURL: nil)
             for cookie in cookies {
                 var cookieProperties = [HTTPCookiePropertyKey: Any]()
