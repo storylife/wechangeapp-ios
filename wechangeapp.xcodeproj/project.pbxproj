@@ -27,6 +27,7 @@
 		FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */; };
 		FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */; };
 		FAE04F7B26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */; };
+		FAE04F7D26CE695300A4F9D5 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7C26CE695300A4F9D5 /* NetHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChangeNotificationManager.swift; sourceTree = "<group>"; };
 		FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppManager.swift; sourceTree = "<group>"; };
 		FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExternalAppInformation+RocketChat.swift"; sourceTree = "<group>"; };
+		FAE04F7C26CE695300A4F9D5 /* NetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 		BFDD961326A07199006DA5AC /* util */ = {
 			isa = PBXGroup;
 			children = (
+				FAE04F7C26CE695300A4F9D5 /* NetHelper.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				BFDD961926A07A4A006DA5AC /* WeChangeAPIManager.swift in Sources */,
 				FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */,
 				BFDD95DE26A06676006DA5AC /* AppDelegate.swift in Sources */,
+				FAE04F7D26CE695300A4F9D5 /* NetHelper.swift in Sources */,
 				BFDD95E026A06676006DA5AC /* SceneDelegate.swift in Sources */,
 				FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */,
 				FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */,
