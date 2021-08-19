@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         }
         
         // Fetch data once an hour.
-        UIApplication.shared.setMinimumBackgroundFetchInterval(3600)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(1200)
         
         return true
     }
