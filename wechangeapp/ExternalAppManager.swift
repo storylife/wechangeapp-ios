@@ -14,6 +14,7 @@ struct ExternalAppManager {
         }
     }
     
+    // TODO: maybe we should remember the user's decision and add an option 'always open the external app?'
     private static func externalAppIsInstalledDialog(appInfo: ExternalAppInformation, presentingViewController vc: UIViewController){
         var message = appInfo.appTitle + "ist installiert!"
         message = message + "\n\n" + appInfo.installInstructionsText

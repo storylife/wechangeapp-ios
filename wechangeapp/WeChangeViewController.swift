@@ -11,6 +11,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     var appsToLaunchByURL:[String:ExternalAppInformation] = [:];
     var lastTimeCheckedForNewsUpdates = Date()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,37 +19,10 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         self.webView.navigationDelegate = self;
         self.webView.uiDelegate = self;
         
-        let link = URL(string:BrowserState.currentURL)!
-        let request = URLRequest(url: link)
+        let currentURL = URL(string:BrowserState.currentURL)!
+        let request = URLRequest(url: currentURL)
         webView.load(request)
-        
-        let session = URLSession.shared
-        let requestCookie = NSMutableURLRequest(url: NSURL(string: BrowserState.currentURL)! as URL)
-        let task = session.dataTask(with: requestCookie as URLRequest) { data, response, error in
-            guard
-                let url = response?.url,
-                let httpResponse = response as? HTTPURLResponse,
-                let fields = httpResponse.allHeaderFields as? [String: String]
-            else { return }
-
-            let cookies = HTTPCookie.cookies(withResponseHeaderFields: fields, for: url)
-            BrowserState.cookies = cookies;
-            HTTPCookieStorage.shared.setCookies(cookies, for: url, mainDocumentURL: nil)
-            for cookie in cookies {
-                var cookieProperties = [HTTPCookiePropertyKey: Any]()
-                cookieProperties[.name] = cookie.name
-                cookieProperties[.value] = cookie.value
-                cookieProperties[.domain] = cookie.domain
-                cookieProperties[.path] = cookie.path
-                cookieProperties[.version] = cookie.version
-                cookieProperties[.expires] = Date().addingTimeInterval(31536000)
-
-                let newCookie = HTTPCookie(properties: cookieProperties)
-                HTTPCookieStorage.shared.setCookie(newCookie!)
-                if Config.DEBUG == true { print("name: \(cookie.name) value: \(cookie.value)") }
-            }
-        }
-        task.resume()
+        WeChangeAPIManager.manageCookie(forUrlSession: URLSession.shared, url: currentURL)
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -64,6 +38,6 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
                 ExternalAppManager.startExternalAppDialog(appInfo: externalAppInfo, fromViewController: self);
             }
         }
-        decisionHandler(WKNavigationActionPolicy.allow)
+        decisionHandler(WKNavigationActionPolicy.allow) // TODO: check if it's better to pass this handler to the dialog and to not allow if external app gets started
     }
 }
