@@ -2,11 +2,10 @@ import UIKit
 import WebKit
 import SwiftyJSON
 import AppTrackingTransparency
-import MapKit
 import UserNotifications
 
 
-class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegate,CLLocationManagerDelegate {
+class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
     var appsToLaunchByURL:[String:ExternalAppInformation] = [:];
