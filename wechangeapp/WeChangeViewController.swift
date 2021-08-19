@@ -61,74 +61,14 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         let request = navigationAction.request
         if Config.DEBUG == true { print("request: ", request) }
 
-        for (key, value) in appsToLaunchByURL
+        for (appURLScheme, externalAppInfo) in appsToLaunchByURL
         {
-            if (request.url?.absoluteString.hasPrefix(key))!
+            if (request.url?.absoluteString.hasPrefix(appURLScheme))!
             {
-                if Config.DEBUG == true { print("URL found. Starting external app") }
-                launchExternalApp(appInfo: value);
+                if Config.DEBUG == true { print("URL found. Trying to start external app") }
+                ExternalAppManager.startExternalAppDialog(appInfo: externalAppInfo, fromViewController: self);
             }
         }
         decisionHandler(WKNavigationActionPolicy.allow)
     }
-    
-    func launchExternalApp(appInfo: ExternalAppInformation) {
-        if let appLaunchURL = URL(string: appInfo.appURL) {
-            if Config.DEBUG == true { print("Check if device has an app for this URL scheme: \(appLaunchURL)") }
-            if UIApplication.shared.canOpenURL(appLaunchURL as URL){
-                externalAppIsInstalledDialog(appInfo: appInfo)
-            } else {
-                if Config.DEBUG == true { print("No App found for this URL: \(appLaunchURL)") }
-                externalAppIsNotInstalledDialog(appInfo: appInfo)
-            }
-        }
-    }
-    
-    func externalAppIsInstalledDialog(appInfo: ExternalAppInformation){
-        var message = appInfo.appTitle + "ist installiert!"
-        message = message + "\n\n" + appInfo.installInstructionsText
-        
-        let alert = UIAlertController(title: "Externe App starten", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: appInfo.appTitle + " starten", style: .default) { action in
-            if let appLaunchURL = URL(string: appInfo.appURL) {
-                UIApplication.shared.open(appLaunchURL)
-            }
-            _ = self.navigationController?.popViewController(animated: true)
-        })
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel));
-        alert.addAction(UIAlertAction(title: "Im Browser öffnen", style: .default){ action in
-            if let browserURL = URL(string: appInfo.browserURL), UIApplication.shared.canOpenURL(browserURL) {
-                if Config.DEBUG == true { print("Trying to open URL: \(browserURL)") }
-                UIApplication.shared.open(browserURL)
-            }
-            _ = self.navigationController?.popViewController(animated: true)
-        })
-        present(alert, animated: true)
-    }
-    
-    func externalAppIsNotInstalledDialog(appInfo: ExternalAppInformation){
-        var message = appInfo.appTitle + " ist nicht installiert!"
-        message = message + "\n\n" + "Alternativ kannst du die Anwendung auch im Browser öffnen."
-        
-        let alert = UIAlertController(title: "Externe App starten", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: appInfo.appTitle + " installieren", style: .default) { action in
-            
-            //Open Appstore
-            if let appURL = URL(string: "https://apps.apple.com/de/app/" + appInfo.appStoreNameAndIDPartOfURL){
-                UIApplication.shared.open(appURL)
-            }
-            _ = self.navigationController?.popViewController(animated: true)
-        })
-        alert.addAction(UIAlertAction(title: "Abbrechen", style: .cancel));
-        alert.addAction(UIAlertAction(title: "Im Browser öffnen", style: .default){ action in
-            
-            if let browserURL = URL(string: appInfo.browserURL), UIApplication.shared.canOpenURL(browserURL) {
-                if Config.DEBUG == true { print("Trying to open URL: \(browserURL)") }
-                UIApplication.shared.open(browserURL)
-            }
-            _ = self.navigationController?.popViewController(animated: true)
-        })
-        present(alert, animated: true)
-    }
-    
 }

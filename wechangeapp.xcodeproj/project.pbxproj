@@ -25,6 +25,7 @@
 		C26A3765CA3CC9FD2E089890 /* Pods_wechangeapp_wechangeappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7737F817D449C520211CB3 /* Pods_wechangeapp_wechangeappUITests.framework */; };
 		FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */; };
 		FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */; };
+		FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		ED64DB421F3F190406364AD1 /* Pods-wechangeappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeappTests.debug.xcconfig"; path = "Target Support Files/Pods-wechangeappTests/Pods-wechangeappTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChangeNewsFetcher.swift; sourceTree = "<group>"; };
 		FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChangeNotificationManager.swift; sourceTree = "<group>"; };
+		FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */,
 				BFDD95DF26A06676006DA5AC /* SceneDelegate.swift */,
 				BFDD95E126A06676006DA5AC /* WeChangeViewController.swift */,
+				FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */,
 				FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */,
 				BFDD95E326A06676006DA5AC /* Main.storyboard */,
 				BFDD95E626A06678006DA5AC /* Assets.xcassets */,
@@ -458,6 +461,7 @@
 				FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */,
 				BFDD95DE26A06676006DA5AC /* AppDelegate.swift in Sources */,
 				BFDD95E026A06676006DA5AC /* SceneDelegate.swift in Sources */,
+				FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */,
 				FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */,
 				BFDD961526A071CD006DA5AC /* WechangeCookie.swift in Sources */,
 				BFDD961726A07634006DA5AC /* ViewModel.swift in Sources */,
