@@ -75,9 +75,11 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     
     func launchExternalApp(appInfo: ExternalAppInformation) {
         if let appLaunchURL = URL(string: appInfo.appURL) {
+            if Config.DEBUG == true { print("Check if device has an app for this URL scheme: \(appLaunchURL)") }
             if UIApplication.shared.canOpenURL(appLaunchURL as URL){
                 externalAppIsInstalledDialog(appInfo: appInfo)
             } else {
+                if Config.DEBUG == true { print("No App found for this URL: \(appLaunchURL)") }
                 externalAppIsNotInstalledDialog(appInfo: appInfo)
             }
         }
