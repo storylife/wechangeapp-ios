@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         notificationCenter.delegate = self
         notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if let error = error {
-                print(error) // TODO: handle error!
+                if Config.DEBUG == true {print(error)} // TODO: handle error!
             }
         }
         

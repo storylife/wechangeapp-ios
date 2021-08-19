@@ -45,7 +45,7 @@ open class Net {
                     }
                     if let w_res_data = res.data {
                         let w_res_data_str = String(describing: w_res_data)
-                        print("Response:\(w_res_data_str)")
+                        if Config.DEBUG == true { print("Response:\(w_res_data_str)") }
                     }
                     w_failure(999, "Can't connect to the server!")
                 }
