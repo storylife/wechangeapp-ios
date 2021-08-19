@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             completionHandler()
             return
         }
-        Net.markNotificationSeen(timestamp: notificationTimestamp, successHandler: { jsonResponse in
+        WeChangeAPIManager.markNotificationSeen(timestamp: notificationTimestamp, successHandler: { jsonResponse in
             if Config.DEBUG == true { print("mark as seen – success! \(jsonResponse)")}
         }, failureHandler: { errorCode, errorMessage in
             if Config.DEBUG == true { print("mark as seen – failed!! Error: \(errorMessage) (\(errorCode))")}

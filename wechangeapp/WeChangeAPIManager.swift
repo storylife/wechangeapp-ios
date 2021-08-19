@@ -4,19 +4,17 @@ import SwiftyJSON
 
 
 // TODO: refactor to conform to modern code style
-open class Net {
+open class WeChangeAPIManager {
     
     public typealias SuccessBlock = (JSON) -> Void
     public typealias FailureBlock = (_ code: Int, _ errMsg: String) -> Void
         
     private static func doRequestWithHeader(
-        url     p_url           :String,
-        method  p_http_method: Alamofire.HTTPMethod,
-        headers  p_headers    : HTTPHeaders,
-        success p_success   : SuccessBlock?,
-        failure p_failure   : FailureBlock?) {
-        
-        let url = p_url
+        url:String,
+        method: Alamofire.HTTPMethod,
+        headers: HTTPHeaders,
+        successHandler: SuccessBlock?,
+        failureHandler: FailureBlock?) {
         
         for cookie in BrowserState.cookies {
             var cookieProperties = [HTTPCookiePropertyKey: Any]()
@@ -31,28 +29,26 @@ open class Net {
             AF.session.configuration.httpCookieStorage?.setCookie(newCookie)
         }
         
-        AF.request(url, method: p_http_method, parameters: nil, encoding: URLEncoding.default, headers: p_headers){
+        AF.request(url, method: method, parameters: nil, encoding: URLEncoding.default, headers: headers){
             $0.timeoutInterval = 20.0
         }.responseJSON {
-            res in
-            switch res.result {
+            response in
+            switch response.result {
             case .failure(let error):
-                if let w_failure = p_failure {
+                if let failureHandler = failureHandler {
                     if Config.DEBUG == true {
                         print("\n\nAPICallFailed!")
                         print("URL:\(url)")
                         print("Error:\(error.localizedDescription)")
+                        if let responseData = response.data { print("Response:\(String(describing: responseData))")
+                        }
                     }
-                    if let w_res_data = res.data {
-                        let w_res_data_str = String(describing: w_res_data)
-                        if Config.DEBUG == true { print("Response:\(w_res_data_str)") }
-                    }
-                    w_failure(999, "Can't connect to the server!")
+                    failureHandler(999, "Can't connect to the server!")
                 }
                 return
             case .success(let json):
-                if let w_success = p_success {
-                    w_success(JSON(json))
+                if let successHandler = successHandler {
+                    successHandler(JSON(json))
                 }
             }
         }
@@ -63,15 +59,11 @@ open class Net {
         if Config.DEBUG == true { print("markseen URL: " + url) }
 
         let headers:HTTPHeaders = [Config.HTTP_HEADER_REFERER: Config.DASHBOARD_URL];
-        doRequestWithHeader(url: url, method: .post, headers: headers, success: successHandler, failure: failureHandler)
+        doRequestWithHeader(url: url, method: .post, headers: headers, successHandler: successHandler, failureHandler: failureHandler)
     }
     
-    public static func pullNewsUpdates(
-        success p_success   : SuccessBlock?,
-        failure p_failure   : FailureBlock?
-    )
-    {
+    public static func pullNewsUpdates(successHandler: SuccessBlock?, failureHandler: FailureBlock?) {
         let headers:HTTPHeaders = [];
-        doRequestWithHeader(url: Config.NOTIFICATION_URL, method: .get, headers: headers, success: p_success, failure: p_failure)
+        doRequestWithHeader(url: Config.NOTIFICATION_URL, method: .get, headers: headers, successHandler: successHandler, failureHandler: failureHandler)
     }
 }

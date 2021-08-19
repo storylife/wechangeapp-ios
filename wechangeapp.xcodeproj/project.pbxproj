@@ -21,7 +21,7 @@
 		BFDD961226A070DB006DA5AC /* ExternalAppInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961126A070DB006DA5AC /* ExternalAppInformation.swift */; };
 		BFDD961526A071CD006DA5AC /* WechangeCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961426A071CD006DA5AC /* WechangeCookie.swift */; };
 		BFDD961726A07634006DA5AC /* BrowserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961626A07634006DA5AC /* BrowserState.swift */; };
-		BFDD961926A07A4A006DA5AC /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961826A07A4A006DA5AC /* Net.swift */; };
+		BFDD961926A07A4A006DA5AC /* WeChangeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961826A07A4A006DA5AC /* WeChangeAPIManager.swift */; };
 		C26A3765CA3CC9FD2E089890 /* Pods_wechangeapp_wechangeappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7737F817D449C520211CB3 /* Pods_wechangeapp_wechangeappUITests.framework */; };
 		FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */; };
 		FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */; };
@@ -71,7 +71,7 @@
 		BFDD961126A070DB006DA5AC /* ExternalAppInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppInformation.swift; sourceTree = "<group>"; };
 		BFDD961426A071CD006DA5AC /* WechangeCookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechangeCookie.swift; sourceTree = "<group>"; };
 		BFDD961626A07634006DA5AC /* BrowserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserState.swift; sourceTree = "<group>"; };
-		BFDD961826A07A4A006DA5AC /* Net.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
+		BFDD961826A07A4A006DA5AC /* WeChangeAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChangeAPIManager.swift; sourceTree = "<group>"; };
 		D0B47C21C440B8B0E0F559D4 /* Pods-wechangeapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp.debug.xcconfig"; path = "Target Support Files/Pods-wechangeapp/Pods-wechangeapp.debug.xcconfig"; sourceTree = "<group>"; };
 		E3932CB8726823D8B5184ED0 /* Pods-wechangeapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp.release.xcconfig"; path = "Target Support Files/Pods-wechangeapp/Pods-wechangeapp.release.xcconfig"; sourceTree = "<group>"; };
 		ED64DB421F3F190406364AD1 /* Pods-wechangeappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeappTests.debug.xcconfig"; path = "Target Support Files/Pods-wechangeappTests/Pods-wechangeappTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -151,6 +151,7 @@
 				BFDD961026A070C9006DA5AC /* model */,
 				BFDD961326A07199006DA5AC /* util */,
 				BFDD95DD26A06676006DA5AC /* AppDelegate.swift */,
+				BFDD961826A07A4A006DA5AC /* WeChangeAPIManager.swift */,
 				FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */,
 				BFDD95DF26A06676006DA5AC /* SceneDelegate.swift */,
 				BFDD95E126A06676006DA5AC /* WeChangeViewController.swift */,
@@ -204,7 +205,6 @@
 		BFDD961326A07199006DA5AC /* util */ = {
 			isa = PBXGroup;
 			children = (
-				BFDD961826A07A4A006DA5AC /* Net.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -461,7 +461,7 @@
 				BFDD961226A070DB006DA5AC /* ExternalAppInformation.swift in Sources */,
 				BFDD960F26A06DE8006DA5AC /* Config.swift in Sources */,
 				FAE04F7B26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift in Sources */,
-				BFDD961926A07A4A006DA5AC /* Net.swift in Sources */,
+				BFDD961926A07A4A006DA5AC /* WeChangeAPIManager.swift in Sources */,
 				FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */,
 				BFDD95DE26A06676006DA5AC /* AppDelegate.swift in Sources */,
 				BFDD95E026A06676006DA5AC /* SceneDelegate.swift in Sources */,
