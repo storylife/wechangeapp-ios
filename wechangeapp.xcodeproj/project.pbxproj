@@ -26,6 +26,7 @@
 		FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */; };
 		FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */; };
 		FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */; };
+		FAE04F7B26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChangeNewsFetcher.swift; sourceTree = "<group>"; };
 		FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChangeNotificationManager.swift; sourceTree = "<group>"; };
 		FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppManager.swift; sourceTree = "<group>"; };
+		FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExternalAppInformation+RocketChat.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				BFDD960E26A06DE8006DA5AC /* Config.swift */,
+				FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			children = (
 				BFDD961126A070DB006DA5AC /* ExternalAppInformation.swift */,
 				BFDD961626A07634006DA5AC /* BrowserState.swift */,
+				BFDD961426A071CD006DA5AC /* WechangeCookie.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -201,7 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				BFDD961826A07A4A006DA5AC /* Net.swift */,
-				BFDD961426A071CD006DA5AC /* WechangeCookie.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				BFDD95E226A06676006DA5AC /* WeChangeViewController.swift in Sources */,
 				BFDD961226A070DB006DA5AC /* ExternalAppInformation.swift in Sources */,
 				BFDD960F26A06DE8006DA5AC /* Config.swift in Sources */,
+				FAE04F7B26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift in Sources */,
 				BFDD961926A07A4A006DA5AC /* Net.swift in Sources */,
 				FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */,
 				BFDD95DE26A06676006DA5AC /* AppDelegate.swift in Sources */,

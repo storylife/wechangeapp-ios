@@ -13,19 +13,14 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let rocketChatAppInfo = ExternalAppInformation(appStoreNameAndIDPartOfURL: Config.ROCKET_CHAT_APP_STORE_ID,
-                                                       appURL: Config.WECHANGE_ROCKET_CHAT_APP_URL,
-                                                       appTitle: "Rocket Chat",
-                                                       installInstructionsText: Config.CHAT_INSTALL_INSTRUCTIONS_TEXT,
-                                                       browserURL: Config.WECHANGE_ROCKET_CHAT_URL)
-        appsToLaunchByURL[Config.WECHANGE_MESSAGES_URL] = rocketChatAppInfo;
+
+        appsToLaunchByURL[Config.WECHANGE_MESSAGES_URL] = ExternalAppInformation.rocketChat
         self.webView.navigationDelegate = self;
         self.webView.uiDelegate = self;
         
         let link = URL(string:BrowserState.currentURL)!
         let request = URLRequest(url: link)
         webView.load(request)
-        
         
         let session = URLSession.shared
         let requestCookie = NSMutableURLRequest(url: NSURL(string: BrowserState.currentURL)! as URL)
