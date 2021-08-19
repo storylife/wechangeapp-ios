@@ -17,7 +17,6 @@ enum Config {
     
     // generic constants
     static let ROCKET_CHAT_APP_STORE_ID: String = "rocket-chat/id1148741252"
-   
     static let ROCKET_CHAT_UNIVERSAL_URL_PREFIX = "go.rocket.chat"
     
     static let NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS: Double = 10
