@@ -18,7 +18,8 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         appsToLaunchByURL[Config.WECHANGE_MESSAGES_URL] = ExternalAppInformation.rocketChat
         self.webView.navigationDelegate = self;
         self.webView.uiDelegate = self;
-        
+        self.webView.scrollView.showsHorizontalScrollIndicator = false
+
         let currentURL = URL(string:BrowserState.currentURL)!
         let request = URLRequest(url: currentURL)
         webView.load(request)
@@ -39,5 +40,13 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
             }
         }
         decisionHandler(WKNavigationActionPolicy.allow) // TODO: check if it's better to pass this handler to the dialog and to not allow if external app gets started
+    }
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if let frame = navigationAction.targetFrame,
+            frame.isMainFrame {
+            return nil
+        }
+        webView.load(navigationAction.request)
+        return nil
     }
 }
