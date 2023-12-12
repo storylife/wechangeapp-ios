@@ -4,15 +4,18 @@ enum Config {
     static let DEBUG = false
         
     // customer specific constants
-    static let WECHANGE_URL: String = "https://skip.scientists4future.org/dashboard/"
-    static let NOTIFICATION_URL: String = "https://skip.scientists4future.org/profile/api/alerts/get/"
-    static let MARKSEEN_URL: String = "https://skip.scientists4future.org/profile/api/alerts/markseen/"
-    static let DASHBOARD_URL: String = "https://skip.scientists4future.org/dashboard/"
-    static let WECHANGE_MESSAGES_URL: String = "https://skip.scientists4future.org/messages/"
-    static let WECHANGE_ROCKET_CHAT_URL: String = "https://chat.skip.scientists4future.org"
-    static let WECHANGE_ROCKET_CHAT_APP_URL = "rocketchat://chat.skip.scientists4future.org"
-    static let WECHANGE_NEXTCLOUD_URL: String = "https://cloud.skip.scientists4future.org"
-    static let CHAT_INSTALL_INSTRUCTIONS_TEXT: String = "Zur Einrichtung von Rocket.Chat:\n\n1. Klicke auf\"Tritt einem Arbeitsbereich bei\".\n2. Gib als URL \"chat.skip.scientists4future.org\" ein.\n3.Melde dich anschließend mit deinen Zugangsdaten an."
+    static let URL_PREFIX: String = "https://"
+    static let BASE_URL_CORE: String = "meetforchange.ifa.de/"
+    static let WECHANGE_URL: String = URL_PREFIX + BASE_URL_CORE + "dashboard/"
+    // static let WECHANGE_URL: String = "https://skip.scientists4future.org/dashboard/"
+    static let NOTIFICATION_URL: String = URL_PREFIX + BASE_URL_CORE + "/profile/api/alerts/get/"
+    static let MARKSEEN_URL: String = URL_PREFIX + BASE_URL_CORE + "/profile/api/alerts/markseen/"
+    static let DASHBOARD_URL: String = URL_PREFIX + BASE_URL_CORE + "dashboard/"
+    static let WECHANGE_MESSAGES_URL: String = URL_PREFIX + BASE_URL_CORE +  "messages/"
+    static let WECHANGE_ROCKET_CHAT_URL: String =  URL_PREFIX + "chat." + BASE_URL_CORE
+    static let WECHANGE_ROCKET_CHAT_APP_URL = "rocketchat://chat." + BASE_URL_CORE
+    static let WECHANGE_NEXTCLOUD_URL: String = URL_PREFIX + "cloud." + BASE_URL_CORE
+    static let CHAT_INSTALL_INSTRUCTIONS_TEXT: String = "Zur Einrichtung von Rocket.Chat:\n\n1. Klicke auf\"Tritt einem Arbeitsbereich bei\".\n2. Gib als URL \"" + "chat." + BASE_URL_CORE + "\" ein.\n3.Melde dich anschließend mit deinen Zugangsdaten an."
     
     
     // generic constants
