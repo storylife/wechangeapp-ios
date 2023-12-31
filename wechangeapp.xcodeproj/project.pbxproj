@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21E40F6F76845E0A8CCFC3DB /* Pods_wechangeapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 769E135B0E339194A594907E /* Pods_wechangeapp.framework */; };
-		38B45F499E7110990FE0FD85 /* Pods_wechangeappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BBD6669AFCADF6EC31C1D46 /* Pods_wechangeappTests.framework */; };
+		1A86F7E1DDA78F428E71AF42 /* Pods_wechangeapp_wechangeappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32ED38D3DDD209B4486B26BD /* Pods_wechangeapp_wechangeappUITests.framework */; };
+		51DC0AE1046E64B9042BBF35 /* Pods_wechangeappTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D27DA67A442B6A4A50BC5FF6 /* Pods_wechangeappTests.framework */; };
+		76F353CBF3CD71CC9704FF8E /* Pods_wechangeapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7048FC628FB0A1EDF2DE18A /* Pods_wechangeapp.framework */; };
 		BFDD95DE26A06676006DA5AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD95DD26A06676006DA5AC /* AppDelegate.swift */; };
 		BFDD95E026A06676006DA5AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD95DF26A06676006DA5AC /* SceneDelegate.swift */; };
 		BFDD95E226A06676006DA5AC /* WeChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD95E126A06676006DA5AC /* WeChangeViewController.swift */; };
@@ -22,7 +23,6 @@
 		BFDD961526A071CD006DA5AC /* WechangeCookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961426A071CD006DA5AC /* WechangeCookie.swift */; };
 		BFDD961726A07634006DA5AC /* BrowserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961626A07634006DA5AC /* BrowserState.swift */; };
 		BFDD961926A07A4A006DA5AC /* WeChangeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961826A07A4A006DA5AC /* WeChangeAPIManager.swift */; };
-		C26A3765CA3CC9FD2E089890 /* Pods_wechangeapp_wechangeappUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B7737F817D449C520211CB3 /* Pods_wechangeapp_wechangeappUITests.framework */; };
 		FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */; };
 		FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */; };
 		FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */; };
@@ -48,12 +48,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BBD6669AFCADF6EC31C1D46 /* Pods_wechangeappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wechangeappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B7737F817D449C520211CB3 /* Pods_wechangeapp_wechangeappUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wechangeapp_wechangeappUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		735967B724D1EE6963C2C4A5 /* Pods-wechangeapp-wechangeappUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp-wechangeappUITests.release.xcconfig"; path = "Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests.release.xcconfig"; sourceTree = "<group>"; };
-		738447956824D5A1D08AB999 /* Pods-wechangeappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeappTests.release.xcconfig"; path = "Target Support Files/Pods-wechangeappTests/Pods-wechangeappTests.release.xcconfig"; sourceTree = "<group>"; };
-		769E135B0E339194A594907E /* Pods_wechangeapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wechangeapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B97DF9797A7B64FD81FC8EBB /* Pods-wechangeapp-wechangeappUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp-wechangeappUITests.debug.xcconfig"; path = "Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		25407FFEFC2BD16E92497B9B /* Pods-wechangeappTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeappTests.release.xcconfig"; path = "Target Support Files/Pods-wechangeappTests/Pods-wechangeappTests.release.xcconfig"; sourceTree = "<group>"; };
+		32ED38D3DDD209B4486B26BD /* Pods_wechangeapp_wechangeappUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wechangeapp_wechangeappUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		71324DD986916BA31C42BC77 /* Pods-wechangeapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp.release.xcconfig"; path = "Target Support Files/Pods-wechangeapp/Pods-wechangeapp.release.xcconfig"; sourceTree = "<group>"; };
+		82DDA42E5A816D75E43D8272 /* Pods-wechangeapp-wechangeappUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp-wechangeappUITests.release.xcconfig"; path = "Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9D445316041E2B9397FDA68E /* Pods-wechangeappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeappTests.debug.xcconfig"; path = "Target Support Files/Pods-wechangeappTests/Pods-wechangeappTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B7048FC628FB0A1EDF2DE18A /* Pods_wechangeapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wechangeapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B83C6F0731FE8376DE92873D /* Pods-wechangeapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp.debug.xcconfig"; path = "Target Support Files/Pods-wechangeapp/Pods-wechangeapp.debug.xcconfig"; sourceTree = "<group>"; };
 		BFDD95DA26A06676006DA5AC /* wechangeapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = wechangeapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFDD95DD26A06676006DA5AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFDD95DF26A06676006DA5AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,9 +74,8 @@
 		BFDD961426A071CD006DA5AC /* WechangeCookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WechangeCookie.swift; sourceTree = "<group>"; };
 		BFDD961626A07634006DA5AC /* BrowserState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserState.swift; sourceTree = "<group>"; };
 		BFDD961826A07A4A006DA5AC /* WeChangeAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeChangeAPIManager.swift; sourceTree = "<group>"; };
-		D0B47C21C440B8B0E0F559D4 /* Pods-wechangeapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp.debug.xcconfig"; path = "Target Support Files/Pods-wechangeapp/Pods-wechangeapp.debug.xcconfig"; sourceTree = "<group>"; };
-		E3932CB8726823D8B5184ED0 /* Pods-wechangeapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp.release.xcconfig"; path = "Target Support Files/Pods-wechangeapp/Pods-wechangeapp.release.xcconfig"; sourceTree = "<group>"; };
-		ED64DB421F3F190406364AD1 /* Pods-wechangeappTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeappTests.debug.xcconfig"; path = "Target Support Files/Pods-wechangeappTests/Pods-wechangeappTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D27DA67A442B6A4A50BC5FF6 /* Pods_wechangeappTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wechangeappTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3A62F96C5A3D18C380CECB1 /* Pods-wechangeapp-wechangeappUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp-wechangeappUITests.debug.xcconfig"; path = "Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChangeNewsFetcher.swift; sourceTree = "<group>"; };
 		FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChangeNotificationManager.swift; sourceTree = "<group>"; };
 		FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppManager.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21E40F6F76845E0A8CCFC3DB /* Pods_wechangeapp.framework in Frameworks */,
+				76F353CBF3CD71CC9704FF8E /* Pods_wechangeapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38B45F499E7110990FE0FD85 /* Pods_wechangeappTests.framework in Frameworks */,
+				51DC0AE1046E64B9042BBF35 /* Pods_wechangeappTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,22 +104,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C26A3765CA3CC9FD2E089890 /* Pods_wechangeapp_wechangeappUITests.framework in Frameworks */,
+				1A86F7E1DDA78F428E71AF42 /* Pods_wechangeapp_wechangeappUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9296062E32AAF8ABCD38D6DF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7048FC628FB0A1EDF2DE18A /* Pods_wechangeapp.framework */,
+				32ED38D3DDD209B4486B26BD /* Pods_wechangeapp_wechangeappUITests.framework */,
+				D27DA67A442B6A4A50BC5FF6 /* Pods_wechangeappTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		92EFC21E652A21DCD133D4BD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D0B47C21C440B8B0E0F559D4 /* Pods-wechangeapp.debug.xcconfig */,
-				E3932CB8726823D8B5184ED0 /* Pods-wechangeapp.release.xcconfig */,
-				B97DF9797A7B64FD81FC8EBB /* Pods-wechangeapp-wechangeappUITests.debug.xcconfig */,
-				735967B724D1EE6963C2C4A5 /* Pods-wechangeapp-wechangeappUITests.release.xcconfig */,
-				ED64DB421F3F190406364AD1 /* Pods-wechangeappTests.debug.xcconfig */,
-				738447956824D5A1D08AB999 /* Pods-wechangeappTests.release.xcconfig */,
+				B83C6F0731FE8376DE92873D /* Pods-wechangeapp.debug.xcconfig */,
+				71324DD986916BA31C42BC77 /* Pods-wechangeapp.release.xcconfig */,
+				F3A62F96C5A3D18C380CECB1 /* Pods-wechangeapp-wechangeappUITests.debug.xcconfig */,
+				82DDA42E5A816D75E43D8272 /* Pods-wechangeapp-wechangeappUITests.release.xcconfig */,
+				9D445316041E2B9397FDA68E /* Pods-wechangeappTests.debug.xcconfig */,
+				25407FFEFC2BD16E92497B9B /* Pods-wechangeappTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -132,7 +142,7 @@
 				BFDD95FE26A06679006DA5AC /* wechangeappUITests */,
 				BFDD95DB26A06676006DA5AC /* Products */,
 				92EFC21E652A21DCD133D4BD /* Pods */,
-				CD42BC4976DDFB2B063606D2 /* Frameworks */,
+				9296062E32AAF8ABCD38D6DF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,16 +222,6 @@
 			path = util;
 			sourceTree = "<group>";
 		};
-		CD42BC4976DDFB2B063606D2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				769E135B0E339194A594907E /* Pods_wechangeapp.framework */,
-				1B7737F817D449C520211CB3 /* Pods_wechangeapp_wechangeappUITests.framework */,
-				0BBD6669AFCADF6EC31C1D46 /* Pods_wechangeappTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -229,11 +229,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFDD960426A06679006DA5AC /* Build configuration list for PBXNativeTarget "wechangeapp" */;
 			buildPhases = (
-				DFD276A865CE7D67069C48AD /* [CP] Check Pods Manifest.lock */,
+				429ECC7AF1AE1A71BD1B3F70 /* [CP] Check Pods Manifest.lock */,
 				BFDD95D626A06676006DA5AC /* Sources */,
 				BFDD95D726A06676006DA5AC /* Frameworks */,
 				BFDD95D826A06676006DA5AC /* Resources */,
-				BA166B0E7663AEED3D51C3F9 /* [CP] Embed Pods Frameworks */,
+				7BB539F29B884A30681EFC9A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -248,7 +248,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFDD960726A06679006DA5AC /* Build configuration list for PBXNativeTarget "wechangeappTests" */;
 			buildPhases = (
-				5CD151D699336EE2412B7959 /* [CP] Check Pods Manifest.lock */,
+				9328769A40ECAA0EC449237F /* [CP] Check Pods Manifest.lock */,
 				BFDD95EC26A06679006DA5AC /* Sources */,
 				BFDD95ED26A06679006DA5AC /* Frameworks */,
 				BFDD95EE26A06679006DA5AC /* Resources */,
@@ -267,11 +267,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFDD960A26A06679006DA5AC /* Build configuration list for PBXNativeTarget "wechangeappUITests" */;
 			buildPhases = (
-				3CFC659A808594B88E30A443 /* [CP] Check Pods Manifest.lock */,
+				D2C7B87FCAF7688ACD223B84 /* [CP] Check Pods Manifest.lock */,
 				BFDD95F726A06679006DA5AC /* Sources */,
 				BFDD95F826A06679006DA5AC /* Frameworks */,
 				BFDD95F926A06679006DA5AC /* Resources */,
-				9AD681F7291E92EDB70B404C /* [CP] Embed Pods Frameworks */,
+				51DA8668F5314B6DC8080723 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -353,7 +353,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3CFC659A808594B88E30A443 /* [CP] Check Pods Manifest.lock */ = {
+		429ECC7AF1AE1A71BD1B3F70 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -368,14 +368,48 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-wechangeapp-wechangeappUITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-wechangeapp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5CD151D699336EE2412B7959 /* [CP] Check Pods Manifest.lock */ = {
+		51DA8668F5314B6DC8080723 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7BB539F29B884A30681EFC9A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wechangeapp/Pods-wechangeapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-wechangeapp/Pods-wechangeapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wechangeapp/Pods-wechangeapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9328769A40ECAA0EC449237F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -397,41 +431,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9AD681F7291E92EDB70B404C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA166B0E7663AEED3D51C3F9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wechangeapp/Pods-wechangeapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-wechangeapp/Pods-wechangeapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-wechangeapp/Pods-wechangeapp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DFD276A865CE7D67069C48AD /* [CP] Check Pods Manifest.lock */ = {
+		D2C7B87FCAF7688ACD223B84 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -446,7 +446,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-wechangeapp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-wechangeapp-wechangeappUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -578,7 +578,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -633,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -645,20 +645,22 @@
 		};
 		BFDD960526A06679006DA5AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D0B47C21C440B8B0E0F559D4 /* Pods-wechangeapp.debug.xcconfig */;
+			baseConfigurationReference = B83C6F0731FE8376DE92873D /* Pods-wechangeapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 000100;
 				DEVELOPMENT_TEAM = 9BB9XUVKLZ;
 				INFOPLIST_FILE = wechangeapp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "meet for change";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.wechange.meetforchange;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.wechange.meetforchange-production";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -667,20 +669,22 @@
 		};
 		BFDD960626A06679006DA5AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3932CB8726823D8B5184ED0 /* Pods-wechangeapp.release.xcconfig */;
+			baseConfigurationReference = 71324DD986916BA31C42BC77 /* Pods-wechangeapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 000100;
 				DEVELOPMENT_TEAM = 9BB9XUVKLZ;
 				INFOPLIST_FILE = wechangeapp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "meet for change";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.wechange.meetforchange;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "de.wechange.meetforchange-production";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -689,7 +693,7 @@
 		};
 		BFDD960826A06679006DA5AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ED64DB421F3F190406364AD1 /* Pods-wechangeappTests.debug.xcconfig */;
+			baseConfigurationReference = 9D445316041E2B9397FDA68E /* Pods-wechangeappTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -711,7 +715,7 @@
 		};
 		BFDD960926A06679006DA5AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 738447956824D5A1D08AB999 /* Pods-wechangeappTests.release.xcconfig */;
+			baseConfigurationReference = 25407FFEFC2BD16E92497B9B /* Pods-wechangeappTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -733,7 +737,7 @@
 		};
 		BFDD960B26A06679006DA5AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B97DF9797A7B64FD81FC8EBB /* Pods-wechangeapp-wechangeappUITests.debug.xcconfig */;
+			baseConfigurationReference = F3A62F96C5A3D18C380CECB1 /* Pods-wechangeapp-wechangeappUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -753,7 +757,7 @@
 		};
 		BFDD960C26A06679006DA5AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 735967B724D1EE6963C2C4A5 /* Pods-wechangeapp-wechangeappUITests.release.xcconfig */;
+			baseConfigurationReference = 82DDA42E5A816D75E43D8272 /* Pods-wechangeapp-wechangeappUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
