@@ -8,6 +8,8 @@ import UserNotifications
 class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var forwardButton: UIButton!
     var appsToLaunchByURL:[String:ExternalAppInformation] = [:];
     var lastTimeCheckedForNewsUpdates = Date()
     
@@ -24,6 +26,15 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         let request = URLRequest(url: currentURL)
         webView.load(request)
         WeChangeAPIManager.manageCookie(forUrlSession: URLSession.shared, url: currentURL)
+        
+        setupWebNavigationButtons()
+    }
+    
+    private func setupWebNavigationButtons() {
+        backButton.setTitle("", for: .normal)
+        backButton.isEnabled = false;
+        forwardButton.setTitle("", for: .normal)
+        forwardButton.isEnabled = false;
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -41,6 +52,24 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         }
         decisionHandler(WKNavigationActionPolicy.allow) // TODO: check if it's better to pass this handler to the dialog and to not allow if external app gets started
     }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+            backButton.isEnabled = webView.canGoBack ? true : false
+            forwardButton.isEnabled = webView.canGoForward ? true : false
+    }
+    
+    @IBAction func backButtonTapped() {
+        if(webView.canGoBack) {
+            webView.goBack()
+        }
+    }
+    
+    @IBAction func forwardButtonTapped() {
+        if(webView.canGoForward) {
+            webView.goForward()
+        }
+    }
+    
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if let frame = navigationAction.targetFrame,
             frame.isMainFrame {
@@ -49,4 +78,6 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         webView.load(navigationAction.request)
         return nil
     }
+    
+    
 }
