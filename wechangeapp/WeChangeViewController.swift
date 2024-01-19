@@ -50,7 +50,17 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
                 ExternalAppManager.startExternalAppDialog(appInfo: externalAppInfo, fromViewController: self);
             }
         }
-        decisionHandler(WKNavigationActionPolicy.allow) // TODO: check if it's better to pass this handler to the dialog and to not allow if external app gets started
+        if (doesNavigationRequestWantToStartBBBMeeting(request: request)) {
+            print("Trying to start BBB meeting!")
+            // TODO: check permissions for camera and microphone access and if necessary ask the user
+            // but this shouldn't have any impact on BBB to work: it's possible to join a meeting
+            // just as a consumer, without sharing video and/or audio
+        }
+        
+    }
+    
+    func doesNavigationRequestWantToStartBBBMeeting(request: URLRequest) -> Bool {
+        return request.url != nil ? request.url!.absoluteString.hasSuffix("/meeting/") : false
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
