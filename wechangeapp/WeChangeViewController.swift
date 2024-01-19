@@ -108,4 +108,17 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     }
     
     
+    // handle media usage permission requests from webview, e.g. for BigBlueButton video conferences
+    func webView(
+            _ webView: WKWebView,
+            requestMediaCapturePermissionFor origin: WKSecurityOrigin,
+            initiatedByFrame frame: WKFrameInfo,
+            type: WKMediaCaptureType,
+            decisionHandler: @escaping (WKPermissionDecision) -> Void
+        ) {
+            print("WebView requested media capture permissions: ", type)
+            decisionHandler(.grant)
+        }
+    
+    
 }
