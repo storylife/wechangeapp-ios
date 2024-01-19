@@ -41,13 +41,16 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         if Config.DEBUG == true { print("decidePolicyFor") }
         let request = navigationAction.request
         if Config.DEBUG == true { print("request: ", request) }
+        
+        var isDecisionHandlerCalledElsewhere = false
 
         for (appURLScheme, externalAppInfo) in appsToLaunchByURL
         {
             if (request.url?.absoluteString.hasPrefix(appURLScheme))!
             {
                 if Config.DEBUG == true { print("URL found. Trying to start external app") }
-                ExternalAppManager.startExternalAppDialog(appInfo: externalAppInfo, fromViewController: self);
+                isDecisionHandlerCalledElsewhere = true
+                ExternalAppManager.startExternalAppDialog(appInfo: externalAppInfo, fromViewController: self, webViewDecisionHandler: decisionHandler);
             }
         }
         if (doesNavigationRequestWantToStartBBBMeeting(request: request)) {
@@ -55,8 +58,13 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
             // TODO: check permissions for camera and microphone access and if necessary ask the user
             // but this shouldn't have any impact on BBB to work: it's possible to join a meeting
             // just as a consumer, without sharing video and/or audio
+            isDecisionHandlerCalledElsewhere = true
+            decisionHandler(WKNavigationActionPolicy.allow)
         }
         
+        if (!isDecisionHandlerCalledElsewhere) {
+            decisionHandler(WKNavigationActionPolicy.allow)
+        }
     }
     
     func doesNavigationRequestWantToStartBBBMeeting(request: URLRequest) -> Bool {
