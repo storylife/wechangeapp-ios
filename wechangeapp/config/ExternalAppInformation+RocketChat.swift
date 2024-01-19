@@ -11,4 +11,12 @@ extension ExternalAppInformation {
             installInstructionsText: Config.CHAT_INSTALL_INSTRUCTIONS_TEXT,
             browserURL: Config.WECHANGE_ROCKET_CHAT_URL)
     }
+    
+    static var BigBlueButton : ExternalAppInformation {
+        return ExternalAppInformation(appStoreNameAndIDPartOfURL: Config.BIG_BLUE_BUTTON_APP_STORE_ID,
+            appURL: "XYZ not used",
+            appTitle: "Big Blue Button Tablet",
+            installInstructionsText: "XYZ not used",
+            browserURL: "XYZ not used")
+    }
 }

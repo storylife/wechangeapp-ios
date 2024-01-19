@@ -22,6 +22,8 @@ enum Config {
     static let ROCKET_CHAT_APP_STORE_ID: String = "rocket-chat/id1148741252"
     static let ROCKET_CHAT_UNIVERSAL_URL_PREFIX = "go.rocket.chat"
     
+    static let BIG_BLUE_BUTTON_APP_STORE_ID: String = "bigbluebutton-tablet/id1641156756"
+    
     static let NOTIFICATIONS_REFRESH_INTERVAL_IN_SECONDS: Double = 10
     static let CHANNEL_PLATFORM_NOTIFICATIONS_ID: String = "platform_notifications"
     static let REQUEST_TIMER_EVERY_TEN_MINUTES: Int = 1

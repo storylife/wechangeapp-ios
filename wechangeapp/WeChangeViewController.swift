@@ -67,7 +67,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
             // but this shouldn't have any impact on BBB to work: it's possible to join a meeting
             // just as a consumer, without sharing video and/or audio
             isDecisionHandlerCalledElsewhere = true
-            decisionHandler(WKNavigationActionPolicy.allow)
+            BigBlueButtonLaunchOptionManager.showAlertWithOpeningOptionsForVideoConference(appInfo: ExternalAppInformation.BigBlueButton, presentingViewController: self, meetingURL: request.url!, webViewDecisionHandler: decisionHandler)
         }
         
         if (!isDecisionHandlerCalledElsewhere) {

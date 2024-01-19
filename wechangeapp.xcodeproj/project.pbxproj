@@ -28,6 +28,7 @@
 		FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */; };
 		FAE04F7B26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */; };
 		FAE04F7D26CE695300A4F9D5 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7C26CE695300A4F9D5 /* NetHelper.swift */; };
+		FAEA1DD82B5AAF3800675978 /* BigBlueButtonLaunchOptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA1DD72B5AAF3800675978 /* BigBlueButtonLaunchOptionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppManager.swift; sourceTree = "<group>"; };
 		FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExternalAppInformation+RocketChat.swift"; sourceTree = "<group>"; };
 		FAE04F7C26CE695300A4F9D5 /* NetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetHelper.swift; sourceTree = "<group>"; };
+		FAEA1DD72B5AAF3800675978 /* BigBlueButtonLaunchOptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigBlueButtonLaunchOptionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				BFDD95DF26A06676006DA5AC /* SceneDelegate.swift */,
 				BFDD95E126A06676006DA5AC /* WeChangeViewController.swift */,
 				FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */,
+				FAEA1DD72B5AAF3800675978 /* BigBlueButtonLaunchOptionManager.swift */,
 				FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */,
 				BFDD95E326A06676006DA5AC /* Main.storyboard */,
 				BFDD95E626A06678006DA5AC /* Assets.xcassets */,
@@ -470,6 +473,7 @@
 				FAE04F7D26CE695300A4F9D5 /* NetHelper.swift in Sources */,
 				BFDD95E026A06676006DA5AC /* SceneDelegate.swift in Sources */,
 				FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */,
+				FAEA1DD82B5AAF3800675978 /* BigBlueButtonLaunchOptionManager.swift in Sources */,
 				FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */,
 				BFDD961526A071CD006DA5AC /* WechangeCookie.swift in Sources */,
 				BFDD961726A07634006DA5AC /* BrowserState.swift in Sources */,
