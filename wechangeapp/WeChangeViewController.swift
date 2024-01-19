@@ -25,7 +25,7 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         let currentURL = URL(string:BrowserState.currentURL)!
         let request = URLRequest(url: currentURL)
         
-        // setFakeUserAgentToConvinceBigBlueButtonItMightWorkWithThisBrowserWhichIsNotTrue()
+        setFakeUserAgentToConvinceBigBlueButtonItMightWorkWithThisBrowserWhichIsNotTrue()
         
         
         webView.load(request)
