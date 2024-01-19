@@ -650,16 +650,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 000100;
+				CURRENT_PROJECT_VERSION = 000200;
 				DEVELOPMENT_TEAM = 9BB9XUVKLZ;
 				INFOPLIST_FILE = wechangeapp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "meet for change";
+				INFOPLIST_KEY_CFBundleDisplayName = "Meet for Change";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.wechange.meetforchange-production";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -674,16 +675,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 000100;
+				CURRENT_PROJECT_VERSION = 000200;
 				DEVELOPMENT_TEAM = 9BB9XUVKLZ;
 				INFOPLIST_FILE = wechangeapp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "meet for change";
+				INFOPLIST_KEY_CFBundleDisplayName = "Meet for Change";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1.0;
+				MARKETING_VERSION = 0.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.wechange.meetforchange-production";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
