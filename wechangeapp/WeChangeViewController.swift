@@ -67,10 +67,12 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         }
     }
     
+    // BigBlueButton Video Conference
     func doesNavigationRequestWantToStartBBBMeeting(request: URLRequest) -> Bool {
         return request.url != nil ? request.url!.absoluteString.hasSuffix("/meeting/") : false
     }
     
+    // after any kind of navigation, update the 'back' and 'forward' buttons
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
             backButton.isEnabled = webView.canGoBack ? true : false
             forwardButton.isEnabled = webView.canGoForward ? true : false
