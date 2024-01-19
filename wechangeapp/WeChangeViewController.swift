@@ -24,10 +24,18 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
 
         let currentURL = URL(string:BrowserState.currentURL)!
         let request = URLRequest(url: currentURL)
+        
+        // setFakeUserAgentToConvinceBigBlueButtonItMightWorkWithThisBrowserWhichIsNotTrue()
+        
+        
         webView.load(request)
         WeChangeAPIManager.manageCookie(forUrlSession: URLSession.shared, url: currentURL)
         
         setupWebNavigationButtons()
+    }
+    
+    private func setFakeUserAgentToConvinceBigBlueButtonItMightWorkWithThisBrowserWhichIsNotTrue() {
+        webView.customUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
     }
     
     private func setupWebNavigationButtons() {
