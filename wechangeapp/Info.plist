@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library is used for (optional) sharing of photos in video conferences via BigBlueButton service</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Microphone is used for video conferences via BigBlueButton service</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera is used for video conferences via BigBlueButton service.</string>
+	<key>NSPhotoLibraryLimitedAccessAPISupport</key>
+	<true/>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
