@@ -25,6 +25,8 @@
 		BFDD961926A07A4A006DA5AC /* WeChangeAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFDD961826A07A4A006DA5AC /* WeChangeAPIManager.swift */; };
 		FA5F20D026C973D700DD90A7 /* WeChangeNewsFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */; };
 		FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */; };
+		FA998F0E2B91D8C000AAFC11 /* LayoutAdjustments.css in Resources */ = {isa = PBXBuildFile; fileRef = FA998F0D2B91D8C000AAFC11 /* LayoutAdjustments.css */; };
+		FA998F102B91D9C500AAFC11 /* WebViewCustomInjectionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA998F0F2B91D9C500AAFC11 /* WebViewCustomInjectionHelper.swift */; };
 		FAE04F7926CE597400A4F9D5 /* ExternalAppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */; };
 		FAE04F7B26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */; };
 		FAE04F7D26CE695300A4F9D5 /* NetHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE04F7C26CE695300A4F9D5 /* NetHelper.swift */; };
@@ -79,6 +81,8 @@
 		F3A62F96C5A3D18C380CECB1 /* Pods-wechangeapp-wechangeappUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-wechangeapp-wechangeappUITests.debug.xcconfig"; path = "Target Support Files/Pods-wechangeapp-wechangeappUITests/Pods-wechangeapp-wechangeappUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FA5F20CF26C973D600DD90A7 /* WeChangeNewsFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChangeNewsFetcher.swift; sourceTree = "<group>"; };
 		FA5F20D126C9821F00DD90A7 /* WeChangeNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChangeNotificationManager.swift; sourceTree = "<group>"; };
+		FA998F0D2B91D8C000AAFC11 /* LayoutAdjustments.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = LayoutAdjustments.css; sourceTree = "<group>"; };
+		FA998F0F2B91D9C500AAFC11 /* WebViewCustomInjectionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewCustomInjectionHelper.swift; sourceTree = "<group>"; };
 		FAE04F7826CE597400A4F9D5 /* ExternalAppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExternalAppManager.swift; sourceTree = "<group>"; };
 		FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExternalAppInformation+RocketChat.swift"; sourceTree = "<group>"; };
 		FAE04F7C26CE695300A4F9D5 /* NetHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetHelper.swift; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 			children = (
 				BFDD960E26A06DE8006DA5AC /* Config.swift */,
 				FAE04F7A26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift */,
+				FA998F0D2B91D8C000AAFC11 /* LayoutAdjustments.css */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				FAE04F7C26CE695300A4F9D5 /* NetHelper.swift */,
+				FA998F0F2B91D9C500AAFC11 /* WebViewCustomInjectionHelper.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -333,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA998F0E2B91D8C000AAFC11 /* LayoutAdjustments.css in Resources */,
 				BFDD95EA26A06678006DA5AC /* LaunchScreen.storyboard in Resources */,
 				BFDD95E726A06678006DA5AC /* Assets.xcassets in Resources */,
 				BFDD95E526A06676006DA5AC /* Main.storyboard in Resources */,
@@ -467,6 +474,7 @@
 				BFDD961226A070DB006DA5AC /* ExternalAppInformation.swift in Sources */,
 				BFDD960F26A06DE8006DA5AC /* Config.swift in Sources */,
 				FAE04F7B26CE60B200A4F9D5 /* ExternalAppInformation+RocketChat.swift in Sources */,
+				FA998F102B91D9C500AAFC11 /* WebViewCustomInjectionHelper.swift in Sources */,
 				BFDD961926A07A4A006DA5AC /* WeChangeAPIManager.swift in Sources */,
 				FA5F20D226C9821F00DD90A7 /* WeChangeNotificationManager.swift in Sources */,
 				BFDD95DE26A06676006DA5AC /* AppDelegate.swift in Sources */,

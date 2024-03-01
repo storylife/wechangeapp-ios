@@ -28,6 +28,8 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
         setFakeUserAgentToConvinceBigBlueButtonItMightWorkWithThisBrowserWhichIsNotTrue()
         
         
+        injectCustomLayoutIntoWebContent();
+        
         webView.load(request)
         WeChangeAPIManager.manageCookie(forUrlSession: URLSession.shared, url: currentURL)
         
@@ -36,6 +38,10 @@ class WeChangeViewController: UIViewController, WKUIDelegate,WKNavigationDelegat
     
     private func setFakeUserAgentToConvinceBigBlueButtonItMightWorkWithThisBrowserWhichIsNotTrue() {
         webView.customUserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.97 Safari/537.36"
+    }
+    
+    private func injectCustomLayoutIntoWebContent() {
+        WebViewCustomInjectionHelper.injectCSSIntoPage(webView: webView, cssFileName: "LayoutAdjustments")
     }
     
     private func setupWebNavigationButtons() {
